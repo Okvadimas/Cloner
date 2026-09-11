@@ -1,0 +1,22 @@
+{
+  "name": "landing-page-cloner-engine",
+  "version": "1.0.0",
+  "description": "Zero-dependency Landing Page Cloner Engine for Scalev and Universal pages",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node server.js",
+    "clone": "node clone.js"
+  },
+  "keywords": [
+    "landing-page",
+    "cloner",
+    "scalev",
+    "web-generator"
+  ],
+  "author": "Antigravity",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer-core": "^25.10.0"
+  }
+}

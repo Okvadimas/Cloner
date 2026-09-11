@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raja Saham AI</title>
+  
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+.sf-cart-drawer[data-v-d930be00] {
+  z-index:60;
+  pointer-events:none;
+  visibility:hidden;
+  position:fixed;inset:0;
+}
+
+.sf-cart-drawer.is-open[data-v-d930be00] {
+  visibility:visible;pointer-events:auto;
+}
+
+.sf-cart-drawer__scrim[data-v-d930be00] {
+  opacity:0;
+  background:#0f1e296b;
+  transition:opacity .3s;
+  position:absolute;inset:0;
+}
+
+.sf-cart-drawer.is-open .sf-cart-drawer__scrim[data-v-d930be00] {opacity:1;
+}
+
+.sf-cart-drawer__panel[data-v-d930be00] {
+  background:#fff;
+  flex-direction:column;
+  width:92%;
+  max-width:392px;
+  transition:transform .34s cubic-bezier(.22,1,.36,1);
+  display:flex;
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  transform:translate(100%);box-shadow:-16px 0 40px -18px #0f1e2966;
+}
+
+.sf-cart-drawer.is-open .sf-cart-drawer__panel[data-v-d930be00] {transform:translate(0);
+}
+
+.sf-cart-drawer__body[data-v-d930be00] {
+  -webkit-overflow-scrolling:touch;
+  flex:1;overflow-y:auto;
+}
+
+.sf-cart-drawer__foot[data-v-d930be00] {
+  padding-bottom:max(.875rem,env(safe-area-inset-bottom));flex:none;
+}
+
+.sf-cart-drawer__checkout[data-v-d930be00] {
+  background:var(--sf-primary,#0699cf);transition:filter .15s,transform 80ms;
+}
+
+.sf-cart-drawer__checkout[data-v-d930be00]:not(.pointer-events-none):active {filter:brightness(.94);
+}
+
+.sf-cart-drawer__checkout[data-v-d930be00]:focus-visible {
+  outline:3px solid var(--sf-primary,#0699cf);outline-offset:2px;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .sf-cart-drawer__panel[data-v-d930be00],.sf-cart-drawer__scrim[data-v-d930be00] {transition-duration:.001ms;
+}
+;
+}
+
+html {
+  word-spacing:1px;
+  -webkit-text-size-adjust:100%;
+  -moz-text-size-adjust:100%;
+  text-size-adjust:100%;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-font-smoothing:antialiased;
+  box-sizing:border-box;
+  font-family:Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;font-size:16px;
+}
+
+*,:after,:before {
+  box-sizing:border-box;margin:0;
+}
+
+.button--green {
+  color:#3b8070;
+  border:1px solid #3b8070;
+  border-radius:4px;
+  padding:10px 30px;
+  text-decoration:none;display:inline-block;
+}
+
+.button--green:hover {
+  color:#fff;background-color:#3b8070;
+}
+
+.button--grey {
+  color:#35495e;
+  border:1px solid #35495e;
+  border-radius:4px;
+  margin-left:15px;
+  padding:10px 30px;
+  text-decoration:none;display:inline-block;
+}
+
+.button--grey:hover {
+  color:#fff;background-color:#35495e;
+}
+
+.grecaptcha-badge {visibility:hidden;
+}
+
+.sv-fold-hidden {display:none!important;
+}
+
+.sv-fold-block {position:relative;
+}
+
+.sv-readmore-fold {
+  justify-content:center;
+  margin:4px 0;display:flex;
+}
+
+.sv-readmore-fold--collapsed:before {
+  content:"";
+  background:var(--sv-scrim-image,linear-gradient(to bottom,#fff0,var(--page-bg,#fff)));
+  pointer-events:none;
+  height:72px;
+  position:absolute;
+  bottom:100%;
+  left:0;right:0;
+}
+
+.sv-readmore-pill {
+  width:fit-content;
+  min-height:44px;
+  font:800 14px/1.2 var(--sf-font,"Plus Jakarta Sans",sans-serif);
+  cursor:pointer;
+  appearance:none;
+  border:0;
+  border-radius:999px;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+  padding:8px 20px;
+  transition:filter .15s,transform .1s;display:inline-flex;
+}
+
+button.sv-readmore-pill:hover {filter:brightness(.92);
+}
+
+button.sv-readmore-pill:active {transform:scale(.98);
+}
+
+.sv-readmore-pill:focus-visible {
+  outline:2px solid var(--sv-readmore-accent,#333);outline-offset:2px;
+}
+
+.sv-readmore-caret {transition:transform .25s;
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .sv-readmore-caret,.sv-readmore-pill {transition:none;
+}
+;
+}
+
+.widget-box-shadow-canvas {box-shadow:var(--bs-m);
+}
+
+@media (width>=768px) {
+  .widget-box-shadow-canvas {box-shadow:var(--bs-t);
+}
+;
+}
+
+@media (width>=1024px) {
+  .widget-box-shadow-canvas {box-shadow:var(--bs-d);
+}
+;
+}
+
+.double-bounce {animation:2s ease-in-out infinite sk-bounce;
+}
+
+.double-bounce2 {animation-delay:-1s;
+}
+
+@keyframes sk-bounce {
+  0%,to {transform:scale(0);
+}
+
+  50% {transform:scale(1);
+}
+;
+}
+
+html  {
+  scroll-behavior: smooth;
+}
+
+body  {
+  background-color: #060912 !important;
+  background-image: none !important;
+}
+
+.page-wrap  {
+  background-color: #060912 !important;
+  background-image: none !important;
+}
+
+.glow-ocean  {
+  box-shadow: 0 0 60px rgba(14, 165, 233, 0.15), 0 0 120px rgba(14, 165, 233, 0.05);
+}
+
+.glow-line  {
+  background: linear-gradient(90deg, transparent, rgba(14,165,233,0.5), transparent);
+  height: 1px;
+}
+
+.cta-btn  {
+  text-decoration: none !important;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover  {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  box-shadow: 0 0 30px rgba(14, 165, 233, 0.4);
+  transform: translateY(-2px);
+}
+
+.cta-btn-secondary  {
+  text-decoration: none !important;
+  color: #0ea5e9 !important;
+  border: 1px solid rgba(14, 165, 233, 0.4);
+  transition: all 0.3s ease;
+}
+
+.cta-btn-secondary:hover  {
+  border-color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.1);
+}
+
+.card-dark  {
+  background-color: #0f1629 !important;
+  border: 1px solid rgba(14, 165, 233, 0.1);
+}
+
+.card-highlight  {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(14, 165, 233, 0.02));
+  border: 1px solid rgba(14, 165, 233, 0.25);
+}
+
+.price-slash  {
+  position: relative;
+  color: #64748b;
+}
+
+.price-slash::after  {
+  content: '';
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 50%;
+  height: 2px;
+  background: #ef4444;
+  transform: rotate(-8deg);
+}
+
+@keyframes fadeSlideUp  {
+  from  {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+  to  {
+    opacity: 1;
+    transform: translateY(0);
+}
+;
+}
+
+@keyframes pulse-glow  {
+  0%, 100%  {
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+}
+
+  50%  {
+    box-shadow: 0 0 40px rgba(14, 165, 233, 0.4);
+}
+;
+}
+
+@keyframes notif-in  {
+  from  {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.95);
+}
+
+  to  {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+;
+}
+
+@keyframes notif-out  {
+  from  {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+  to  {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.95);
+}
+;
+}
+
+@keyframes blink  {
+  0%, 100%  {
+    opacity: 1;
+}
+
+  50%  {
+    opacity: 0.3;
+}
+;
+}
+
+@keyframes marquee  {
+  from  {
+    transform: translateX(0);
+}
+
+  to  {
+    transform: translateX(-50%);
+}
+;
+}
+
+.notif-enter  {
+  animation: notif-in 0.5s ease forwards;
+}
+
+.notif-exit  {
+  animation: notif-out 0.4s ease forwards;
+}
+
+.animate-in  {
+  animation: fadeSlideUp 0.8s ease forwards;
+}
+
+.pulse-border  {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.blink  {
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+.marquee-wrap  {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-inner  {
+  display: inline-block;
+  animation: marquee 40s linear infinite;
+}
+
+.bg-grid-pattern  {
+  background-image: linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.text-gradient  {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9, #0284c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.testimonial-card  {
+  background: linear-gradient(180deg, rgba(14, 165, 233, 0.06) 0%, rgba(15, 22, 41, 1) 100%);
+  border: 1px solid rgba(14, 165, 233, 0.12);
+}
+
+.signal-mono  {
+  font-family: 'JetBrains Mono', 'Menlo', monospace;
+}
+
+.terminal-box  {
+  background: #0a0e1a;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: 12px;
+}
+
+.broker-logo  {
+  background: #0f1629;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #cbd5e1;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+  </style>
+</head>
+<body>
+
+<div id="__nuxt"><main><!--[--><div><div class="relative flex min-h-screen w-full flex-col" style="background-color: #060912;--page-bg: #060912;"><div class="children:z-1 relative mb-12 flex w-full flex-col items-center before:content-DEFAULT before:max-w-[510px] before:md:max-w-[688px] text-[16px]" style="" storelogo analyticsingesttoken="SFMyNTY.g2gDdAAAAAd3AWN3BWZhbHNldwFiYgAA7qx3AXNhAHcBcGIAA8ZadwFpbQAAAAYyNDczODZ3AXZhAncBZW0AAAAMbGFuZGluZ19wYWdlbgYAAEOei6ABYgABUYA.r1DjImX-gKU8QIiN2iCu4woHX5VUtGn_yihw22SzTqA"><!----><!----><!----><div style="background-color:var(--page-bg);box-shadow:0 0 8px rgb(0 0 0 / 25%);" class="max-w-[510px] md:max-w-[688px] min-h-full flex w-full flex-col"><div class="flex-col md:flex-row flex h-full w-full border-black-150"><div class="flex w-full flex-col"><!----><div class="pt-[var(--pw-m-t)] pr-[var(--pw-m-r)] pb-[var(--pw-m-b)] pl-[var(--pw-m-l)] md:pt-[var(--pw-t-t)] md:pr-[var(--pw-t-r)] md:pb-[var(--pw-t-b)] md:pl-[var(--pw-t-l)] lg:pt-[var(--pw-d-t)] lg:pr-[var(--pw-d-r)] lg:pb-[var(--pw-d-b)] lg:pl-[var(--pw-d-l)] gap-[var(--gap-m)] md:gap-[var(--gap-t)] lg:gap-[var(--gap-d)] flex w-full flex-col" style="--pw-d-t:0px;--pw-d-r:0px;--pw-d-b:32px;--pw-d-l:0px;--pw-t-t:0px;--pw-t-r:0px;--pw-t-b:32px;--pw-t-l:0px;--pw-m-t:0px;--pw-m-r:0px;--pw-m-b:35px;--pw-m-l:0px;--gap-d:32px;--gap-t:32px;--gap-m:16px;"><!--[--><!--[--><div class="ml-[var(--mml)] mr-[var(--mmr)] mt-[var(--mmt)] mb-[var(--mmb)] md:ml-[var(--mtl)] md:mr-[var(--mtr)] mt-[var(--mtt)] md:mb-[var(--mtb)] lg:ml-[var(--mdl)] lg:mr-[var(--mdr)] lg:mt-[var(--mdt)] lg:mb-[var(--mdb)] relative flex flex-col" style=""><div data-scalev-builder-html-ssr class="html-viewer w-full bg-cover bg-center widget-box-shadow-canvas relative flex-col bg-cover bg-center outline-none pt-[var(--pw-m-t)] pr-[var(--pw-m-r)] pb-[var(--pw-m-b)] pl-[var(--pw-m-l)] md:pt-[var(--pw-t-t)] md:pr-[var(--pw-t-r)] md:pb-[var(--pw-t-b)] md:pl-[var(--pw-t-l)] lg:pt-[var(--pw-d-t)] lg:pr-[var(--pw-d-r)] lg:pb-[var(--pw-d-b)] lg:pl-[var(--pw-d-l)] gap-[var(--gm)] md:gap-[var(--gt)] lg:gap-[var(--gd)] rounded-[var(--brm)] md:rounded-[var(--brt)] lg:rounded-[var(--brd)]" data-allow-mismatch="children" id="html-code-smc2I5izib" url-params style="background-color:transparent;background-image:none;--pw-d-t:0px;--pw-d-r:0px;--pw-d-b:0px;--pw-d-l:0px;--pw-t-t:0px;--pw-t-r:0px;--pw-t-b:0px;--pw-t-l:0px;--pw-m-t:0px;--pw-m-r:0px;--pw-m-b:0px;--pw-m-l:0px;"><!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raja Saham AI — Stockpick AI Harian untuk Trader Saham Indonesia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: { sans: ['Inter', 'sans-serif'] },
+                colors: {
+                    ocean: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e', 950: '#082f49' },
+                    dark: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#1e293b', 800: '#0f1629', 900: '#0a0e1a', 950: '#060912' }
+                }
+            }
+        }
+    }
+</script>
+<style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #060912 !important; background-image: none !important; }
+    .page-wrap { background-color: #060912 !important; background-image: none !important; }
+    .glow-ocean { box-shadow: 0 0 60px rgba(14, 165, 233, 0.15), 0 0 120px rgba(14, 165, 233, 0.05); }
+    .glow-line { background: linear-gradient(90deg, transparent, rgba(14,165,233,0.5), transparent); height: 1px; }
+    .cta-btn { text-decoration: none !important; color: #ffffff !important; background: linear-gradient(135deg, #0ea5e9, #0284c7); transition: all 0.3s ease; }
+    .cta-btn:hover { background: linear-gradient(135deg, #38bdf8, #0ea5e9); box-shadow: 0 0 30px rgba(14, 165, 233, 0.4); transform: translateY(-2px); }
+    .cta-btn-secondary { text-decoration: none !important; color: #0ea5e9 !important; border: 1px solid rgba(14, 165, 233, 0.4); transition: all 0.3s ease; }
+    .cta-btn-secondary:hover { border-color: #0ea5e9; background: rgba(14, 165, 233, 0.1); }
+    .card-dark { background-color: #0f1629 !important; border: 1px solid rgba(14, 165, 233, 0.1); }
+    .card-highlight { background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(14, 165, 233, 0.02)); border: 1px solid rgba(14, 165, 233, 0.25); }
+    .price-slash { position: relative; color: #64748b; }
+    .price-slash::after { content: ''; position: absolute; left: -4px; right: -4px; top: 50%; height: 2px; background: #ef4444; transform: rotate(-8deg); }
+    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.2); } 50% { box-shadow: 0 0 40px rgba(14, 165, 233, 0.4); } }
+    @keyframes notif-in { from { opacity: 0; transform: translateX(-30px) scale(0.95); } to { opacity: 1; transform: translateX(0) scale(1); } }
+    @keyframes notif-out { from { opacity: 1; transform: translateX(0) scale(1); } to { opacity: 0; transform: translateX(-30px) scale(0.95); } }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .notif-enter { animation: notif-in 0.5s ease forwards; }
+    .notif-exit { animation: notif-out 0.4s ease forwards; }
+    .animate-in { animation: fadeSlideUp 0.8s ease forwards; }
+    .pulse-border { animation: pulse-glow 2.5s ease-in-out infinite; }
+    .blink { animation: blink 1.4s ease-in-out infinite; }
+    .marquee-wrap { overflow: hidden; white-space: nowrap; }
+    .marquee-inner { display: inline-block; animation: marquee 40s linear infinite; }
+    .bg-grid-pattern { background-image: linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px); background-size: 40px 40px; }
+    .text-gradient { background: linear-gradient(135deg, #38bdf8, #0ea5e9, #0284c7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .testimonial-card { background: linear-gradient(180deg, rgba(14, 165, 233, 0.06) 0%, rgba(15, 22, 41, 1) 100%); border: 1px solid rgba(14, 165, 233, 0.12); }
+    .signal-mono { font-family: 'JetBrains Mono', 'Menlo', monospace; }
+    .terminal-box { background: #0a0e1a; border: 1px solid rgba(14, 165, 233, 0.2); border-radius: 12px; }
+    .broker-logo { background: #0f1629; border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 10px 14px; color: #cbd5e1; font-weight: 600; font-size: 12px; }
+</style>
+</head>
+<body class="page-wrap font-sans text-dark-100 antialiased">
+
+<!-- SALES NOTIFICATION POPUP -->
+<div id="salesNotif" class="fixed bottom-5 left-5 z-50 hidden max-w-xs">
+    <div class="card-dark rounded-xl p-4 flex items-start gap-3 shadow-2xl">
+        <div class="w-9 h-9 rounded-full bg-ocean-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-ocean-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+            <p id="notifText" class="text-xs text-dark-300 leading-relaxed"></p>
+            <p class="text-[10px] text-dark-500 mt-1" id="notifTime"></p>
+        </div>
+        <button onclick="closeNotif()" class="text-dark-500 hover:text-dark-300 transition flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </div>
+</div>
+
+<!-- ===================== ANNOUNCEMENT BAR (marquee) ===================== -->
+<div class="bg-ocean-500/10 border-b border-ocean-500/20 py-2 marquee-wrap">
+    <div class="marquee-inner text-xs text-ocean-300 font-semibold">
+        <span class="mx-4">◆ AI AKTIF JAM BURSA</span>
+        <span class="mx-4">◆ 800+ SAHAM BEI DISCAN OTOMATIS</span>
+        <span class="mx-4">◆ 3 SESI/HARI: PRE-MARKET, MIDDAY, POST-MARKET</span>
+        <span class="mx-4">◆ WIN RATE 86.4%</span>
+        <span class="mx-4">◆ ENTRY/TP/SL EXACT DALAM RUPIAH</span>
+        <span class="mx-4">◆ ANTI-GORENGAN FILTER</span>
+        <span class="mx-4">◆ AI AKTIF JAM BURSA</span>
+        <span class="mx-4">◆ 800+ SAHAM BEI DISCAN OTOMATIS</span>
+        <span class="mx-4">◆ ENTRY/TP/SL EXACT DALAM RUPIAH</span>
+        <span class="mx-4">◆ ANTI-GORENGAN FILTER</span>
+    </div>
+</div>
+
+<!-- ===================== HERO SECTION — CONTRARIAN HOOK ===================== -->
+<section class="relative overflow-hidden bg-grid-pattern">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-ocean-500/5 blur-[150px] pointer-events-none"></div>
+
+    <div class="relative max-w-2xl mx-auto px-5 pt-12 pb-16">
+        <!-- Eyebrow -->
+        <div class="animate-in flex items-center justify-center gap-2 mb-6">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 blink"></span>
+            <span class="text-ocean-400 text-xs font-semibold tracking-widest uppercase">AI STOCKPICK #1 UNTUK SAHAM INDONESIA</span>
+        </div>
+
+        <!-- Headline — Kontrarian angle (Zeta benchmark) -->
+        <h1 class="animate-in text-center text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight mb-6" style="animation-delay: 0.1s">
+            Saat IHSG Bergejolak dan Trader Lain Panik Cutloss, <span class="text-gradient">Pengguna Raja Saham AI Tetap Dapat Stockpick Terkurasi</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="animate-in text-center text-dark-400 text-base sm:text-lg leading-relaxed mb-8" style="animation-delay: 0.2s">
+            AI kami screening <strong class="text-dark-200">800+ saham BEI</strong> setiap sesi bursa. Kirim <strong class="text-ocean-400">3-5 sinyal per hari</strong> ke dashboard + Discord kamu — lengkap dengan <strong class="text-ocean-400">Entry, TP, SL exact dalam Rupiah</strong>. Filter gorengan otomatis. Tanpa analisa manual berjam-jam.
+        </p>
+
+        <!-- Hero Image -->
+        <div class="animate-in rounded-2xl overflow-hidden border border-ocean-500/10 glow-ocean mb-8" style="animation-delay: 0.3s">
+            <img src="https://cdn.scalev.id/uploads/1777022880/7hHxrMECZTfkPUlCmcKfAw/1777022879861-Screenshot-2026-04-24-at-16.27.25.webp" alt="Raja Saham AI Dashboard" class="w-full h-auto block" loading="eager">
+        </div>
+
+        <!-- LIVE SIGNAL PREVIEW WIDGET -->
+        <div class="animate-in terminal-box p-5 mb-8" style="animation-delay: 0.35s">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-white/5">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 blink"></span>
+                    <span class="text-white text-xs font-bold tracking-wider">STOCKPICKS</span>
+                </div>
+                <span class="text-slate-500 text-[10px] signal-mono">rajasaham.ai</span>
+            </div>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/15">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2 py-1 rounded bg-emerald-500 text-white text-[10px] font-bold">BUY</span>
+                        <div>
+                            <p class="text-white font-bold text-sm">BRPT</p>
+                            <p class="text-slate-400 text-[10px] signal-mono">E Rp1.310 | TP Rp1.345 </p>
+                        </div>
+                    </div>
+                    <span class="text-emerald-400 text-xs font-bold">+2.62% ✓</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/15">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2 py-1 rounded bg-emerald-500 text-white text-[10px] font-bold">BUY</span>
+                        <div>
+                            <p class="text-white font-bold text-sm">BUVA</p>
+                            <p class="text-slate-400 text-[10px] signal-mono">E Rp720 | TP Rp730 </p>
+                        </div>
+                    </div>
+                    <span class="text-emerald-400 text-xs font-bold">+1.39% ✓</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-ocean-500/5 border border-ocean-500/15">
+                    <div class="flex items-center gap-3">
+                        <span class="px-2 py-1 rounded bg-ocean-500 text-white text-[10px] font-bold">WATCH</span>
+                        <div>
+                            <p class="text-white font-bold text-sm">MAPI</p>
+                            <p class="text-slate-400 text-[10px] signal-mono">E Rp1.480 | TP Rp1.530 | SL Rp1.440</p>
+                        </div>
+                    </div>
+                    <span class="text-ocean-400 text-xs font-bold">OPEN</span>
+                </div>
+            </div>
+            <p class="text-slate-500 text-[10px] mt-3 text-center italic">*Sample sinyal Week 21. Sinyal real tersedia untuk member.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="animate-in text-center" style="animation-delay: 0.4s">
+            <a href="#pricing-section" class="cta-btn inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-bold pulse-border">
+                Lihat Stockpick Hari Ini →
+            </a>
+
+            <!-- Discord Button -->
+            <div class="mt-3">
+                <a href="https://discord.gg/3kSewjFjr" target="_blank" rel="noopener noreferrer" class="cta-btn-secondary inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-bold">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.369A19.79 19.79 0 0 0 16.885 3.2a.074.074 0 0 0-.079.037c-.34.607-.719 1.398-.984 2.02a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-1-2.02.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 5.823 4.37a.07.07 0 0 0-.032.027C2.533 9.043 1.64 13.579 2.079 18.057a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.128 12.298 12.298 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.834 19.834 0 0 0 6.002-3.03.077.077 0 0 0 .032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/></svg>
+                    Gabung Komunitas Discord
+                </a>
+            </div>
+
+            <!-- Trust microcopy -->
+            <div class="mt-4 flex flex-col items-center gap-1.5">
+                <p class="text-dark-500 text-xs flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <strong class="text-green-400">Performance Guarantee</strong>
+                </p>
+                <p class="text-dark-500 text-xs flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-ocean-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                    No contract — cancel anytime, tanpa auto-charge
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== PAIN POINTS SECTION ===================== -->
+<section class="relative py-16 px-5 bg-dark-900/30">
+    <div class="max-w-2xl mx-auto">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/20 mb-4">MASALAH TRADER INDONESIA</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6">
+            Kenapa Banyak Trader Saham Indonesia <span class="text-gradient">Masih Rugi?</span>
+        </h2>
+
+        <div class="space-y-4">
+            <div class="card-dark rounded-xl p-5 flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dark-100 mb-1">800+ Saham di BEI, Kamu Cuma Sempet Pantau 10</h3>
+                    <p class="text-dark-400 text-sm leading-relaxed">Ada ratusan saham potensial tapi kamu cuma pantau segelintir. Peluang besar lewat setiap hari tanpa kamu sadari.</p>
+                </div>
+            </div>
+            <div class="card-dark rounded-xl p-5 flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dark-100 mb-1">Saham Gorengan Dimana-mana</h3>
+                    <p class="text-dark-400 text-sm leading-relaxed">Sulit bedain saham bagus dari saham gorengan yang dipompa bandar. Sekali nyangkut, modal bisa stuck berminggu-minggu.</p>
+                </div>
+            </div>
+            <div class="card-dark rounded-xl p-5 flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dark-100 mb-1">FOMO Beli di ARA, Nyangkut Berminggu-minggu</h3>
+                    <p class="text-dark-400 text-sm leading-relaxed">Lihat saham naik ARA, buru-buru beli. Besoknya turun ARB. Emosi menguasai keputusan trading.</p>
+                </div>
+            </div>
+            <div class="card-dark rounded-xl p-5 flex items-start gap-4">
+                <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-bold text-dark-100 mb-1">Signal Provider Mahal & Ga Transparan</h3>
+                    <p class="text-dark-400 text-sm leading-relaxed">Langganan bulanan ratusan ribu, tapi track record ga jelas. Sinyal datang telat. Ga ada SL yang jelas. Jadi korban signal abal-abal.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-highlight rounded-2xl p-6 mt-8 text-center">
+            <p class="text-dark-300 leading-relaxed">
+                Yang kamu butuh <strong class="text-white">bukan belajar teknikal lebih dalam</strong>.<br>
+                Yang kamu butuh: <span class="text-gradient font-bold">AI yang filter 800+ saham dalam hitungan menit</span>.
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== HOW IT WORKS — AI PIPELINE ===================== -->
+<section class="relative py-16 px-5">
+    <div class="max-w-2xl mx-auto">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-ocean-500/10 text-ocean-400 border border-ocean-500/20 mb-4">CARA KERJA AI</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6">
+            Dari Data Mentah → <span class="text-gradient">Sinyal Siap Eksekusi</span>
+        </h2>
+
+        <p class="text-dark-400 leading-relaxed mb-8">
+            Setiap sinyal yang kamu terima sudah melalui 4 tahap validasi otomatis. Tanpa "feeling admin grup" — semua berbasis data.
+        </p>
+
+        <div class="space-y-4">
+            <!-- Step 1 -->
+            <div class="card-dark rounded-xl p-5">
+                <div class="flex items-start gap-4 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-ocean-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">01</div>
+                    <div class="flex-1">
+                        <p class="text-xs text-ocean-400 font-bold uppercase tracking-wider">Data Ingestion</p>
+                        <h3 class="text-white font-bold text-base mt-1">Ambil Data 800+ Saham BEI Real-Time</h3>
+                    </div>
+                </div>
+                <p class="text-dark-400 text-sm leading-relaxed">Data OHLCV live dari sumber terpercaya, ticker list update otomatis dari IDX. Pre-market, in-market, hingga post-market.</p>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">OHLCV</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">IDX API</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">Real-time</span>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="card-dark rounded-xl p-5">
+                <div class="flex items-start gap-4 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-ocean-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">02</div>
+                    <div class="flex-1">
+                        <p class="text-xs text-ocean-400 font-bold uppercase tracking-wider">Technical Analysis</p>
+                        <h3 class="text-white font-bold text-base mt-1">Hitung 7 Indikator Teknikal + Multi-Timeframe</h3>
+                    </div>
+                </div>
+                <p class="text-dark-400 text-sm leading-relaxed">AI hitung RSI, MACD, EMA 20/50, VWAP, ATR, ADX, dan Bollinger Bands untuk setiap saham — di 2 timeframe (60min + Daily) sekaligus.</p>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">RSI</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">MACD</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">EMA 20/50</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">VWAP</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">ATR</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">ADX</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">Bollinger</span>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="card-dark rounded-xl p-5">
+                <div class="flex items-start gap-4 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-ocean-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">03</div>
+                    <div class="flex-1">
+                        <p class="text-xs text-ocean-400 font-bold uppercase tracking-wider">AI Strategy Layer</p>
+                        <h3 class="text-white font-bold text-base mt-1">AI Cross-Check + IHSG Regime Filter</h3>
+                    </div>
+                </div>
+                <p class="text-dark-400 text-sm leading-relaxed">AI cross-check semua indikator, cek kondisi IHSG (bullish/cautious/bearish), lalu apply anti-gorengan filter. Hanya saham dengan setup terbaik yang lolos.</p>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">Multi-factor</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">IHSG Filter</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">Confidence Score</span>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="card-dark rounded-xl p-5">
+                <div class="flex items-start gap-4 mb-3">
+                    <div class="w-10 h-10 rounded-lg bg-ocean-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">04</div>
+                    <div class="flex-1">
+                        <p class="text-xs text-ocean-400 font-bold uppercase tracking-wider">Delivery + Audit</p>
+                        <h3 class="text-white font-bold text-base mt-1">Kirim ke Dashboard + Discord — Auto-Audit</h3>
+                    </div>
+                </div>
+                <p class="text-dark-400 text-sm leading-relaxed">Sinyal dikirim ke dashboard kamu + Discord VIP dengan Entry, TP, SL exact. Sistem auto-audit setiap 10 menit, notifikasi WIN otomatis saat TP tercapai.</p>
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">Dashboard</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">Discord VIP</span>
+                    <span class="text-[10px] px-2 py-1 rounded bg-ocean-500/10 text-ocean-300 signal-mono">Auto-audit 10min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== ANTI-GORENGAN FILTER SPECS ===================== -->
+<section class="relative py-16 px-5 bg-dark-900/30">
+    <div class="max-w-2xl mx-auto">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 mb-4">FILTER TERBUKA</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-6">
+            Anti-Gorengan Filter — <span class="text-gradient">Kriteria Transparan</span>
+        </h2>
+
+        <p class="text-dark-400 leading-relaxed mb-8">
+            Sebelum sampai ke AI, semua saham disaring dulu dengan filter berikut. Ini melindungi modalmu dari saham pump-and-dump.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <div class="card-dark rounded-xl p-5">
+                <svg class="w-6 h-6 text-emerald-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <p class="font-bold text-white text-sm mb-1">Min. Harga Rp 100</p>
+                <p class="text-dark-500 text-xs">Skip saham "receh" yang rawan manipulasi bandar.</p>
+            </div>
+            <div class="card-dark rounded-xl p-5">
+                <svg class="w-6 h-6 text-emerald-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                <p class="font-bold text-white text-sm mb-1">Min. Volume 1jt Lembar</p>
+                <p class="text-dark-500 text-xs">Likuiditas cukup agar entry/exit tidak "sangkut" di orderbook.</p>
+            </div>
+            <div class="card-dark rounded-xl p-5">
+                <svg class="w-6 h-6 text-emerald-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                <p class="font-bold text-white text-sm mb-1">Skip Naik > 7% dalam 3 Candle</p>
+                <p class="text-dark-500 text-xs">Anti-chasing pump — hindari beli di puncak euforia.</p>
+            </div>
+            <div class="card-dark rounded-xl p-5">
+                <svg class="w-6 h-6 text-emerald-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <p class="font-bold text-white text-sm mb-1">IHSG Regime Filter</p>
+                <p class="text-dark-500 text-xs">Bullish = agresif. Cautious = selektif. Bearish = no signal.</p>
+            </div>
+        </div>
+
+        <div class="card-highlight rounded-2xl p-5 text-center">
+            <p class="text-dark-300 text-sm">
+                <strong class="text-white">Dari 800+ saham</strong> → filter → <strong class="text-ocean-400">TOP 3-5 yang layak entry</strong> setiap sesi. Sisanya? Tidak layak masuk daftar sinyal kamu.
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== TRACK RECORD — RADICAL TRANSPARENCY ===================== -->
+<section class="relative py-16 px-5 bg-dark-900/30">
+    <div class="max-w-2xl mx-auto">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-ocean-500/10 text-ocean-400 border border-ocean-500/20 mb-4">TRANSPARANSI TOTAL</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">
+            Track Record — <span class="text-gradient">Termasuk yang LOSS</span>
+        </h2>
+        <p class="text-dark-400 text-sm leading-relaxed mb-8">
+            Kami tampilkan <strong class="text-white">semua sinyal</strong>, bukan cuma yang cuan. Trader dewasa paham: tidak ada sistem 100% win. Yang penting: <strong class="text-white">win rate & risk-reward</strong>.
+        </p>
+
+        <!-- Trade History Table -->
+        <div class="card-dark rounded-2xl overflow-hidden mb-4">
+            <div class="p-4 border-b border-white/5">
+                <p class="text-white font-bold text-sm">Trade History — Sample Rabu, 1 Juli 2026</p>
+                <p class="text-slate-500 text-xs mt-1">8 sinyal • 7 WIN • 1 LOSS • Win Rate 87.5% • PnL Rata-rata +2.85%</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs signal-mono">
+                    <thead class="bg-white/5">
+                        <tr>
+                            <th class="text-left p-3 text-slate-400 font-semibold">SAHAM</th>
+                            <th class="text-right p-3 text-slate-400 font-semibold">ENTRY</th>
+                            <th class="text-right p-3 text-slate-400 font-semibold">EXIT</th>
+                            <th class="text-right p-3 text-slate-400 font-semibold">P/L</th>
+                            <th class="text-center p-3 text-slate-400 font-semibold">STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-300">
+                        <tr class="border-t border-white/5"><td class="p-3 font-semibold">AMMN</td><td class="text-right p-3">3.130</td><td class="text-right p-3">3.240</td><td class="text-right p-3 text-emerald-400 font-bold">+3.51%</td><td class="text-center p-3"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 text-[10px] font-bold">WIN</span></td></tr>
+                        <tr class="border-t border-white/5"><td class="p-3 font-semibold">BRPT</td><td class="text-right p-3">1.310</td><td class="text-right p-3">1.345</td><td class="text-right p-3 text-emerald-400 font-bold">+2.67%</td><td class="text-center p-3"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 text-[10px] font-bold">WIN</span></td></tr>
+                        <tr class="border-t border-white/5"><td class="p-3 font-semibold">BUVA</td><td class="text-right p-3">720</td><td class="text-right p-3">730</td><td class="text-right p-3 text-emerald-400 font-bold">+1.39%</td><td class="text-center p-3"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 text-[10px] font-bold">WIN</span></td></tr>
+                        <tr class="border-t border-white/5"><td class="p-3 font-semibold">CUAN</td><td class="text-right p-3">540</td><td class="text-right p-3">570</td><td class="text-right p-3 text-emerald-400 font-bold">+5.56%</td><td class="text-center p-3"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 text-[10px] font-bold">WIN</span></td></tr>
+                        <tr class="border-t border-white/5"><td class="p-3 font-semibold">ENRG</td><td class="text-right p-3">965</td><td class="text-right p-3">1.000</td><td class="text-right p-3 text-emerald-400 font-bold">+3.36%</td><td class="text-center p-3"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 text-[10px] font-bold">WIN</span></td></tr>
+                        <tr class="border-t border-white/5"><td class="p-3 font-semibold">PTRO</td><td class="text-right p-3">3.620</td><td class="text-right p-3">3.750</td><td class="text-right p-3 text-emerald-400 font-bold">+3.59%</td><td class="text-center p-3"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 text-[10px] font-bold">WIN</span></td></tr>
+                        <tr class="border-t border-white/5"><td class="p-3 font-semibold">TPIA</td><td class="text-right p-3">1.635</td><td class="text-right p-3">1.690</td><td class="text-right p-3 text-emerald-400 font-bold">+3.36%</td><td class="text-center p-3"><span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 text-[10px] font-bold">WIN</span></td></tr>
+                        <tr class="border-t border-white/5 bg-red-500/5"><td class="p-3 font-semibold">BBCA</td><td class="text-right p-3">5.650</td><td class="text-right p-3">5.600</td><td class="text-right p-3 text-red-400 font-bold">-0.88%</td><td class="text-center p-3"><span class="px-2 py-0.5 rounded bg-red-500/15 text-red-400 text-[10px] font-bold">LOSS</span></td></tr>
+                        </tbody>
+                </table>
+            </div>
+            <div class="p-3 bg-white/5 border-t border-white/5 text-center">
+                <p class="text-xs text-slate-400"><em>Menampilkan 8 dari 42 trade minggu ini. Full history tersedia untuk member.</em></p>
+            </div>
+        </div>
+
+        <!-- Stats Summary -->
+        <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="card-dark rounded-xl p-4 text-center">
+                <p class="text-xl font-extrabold text-ocean-400">836</p>
+                <p class="text-dark-500 text-[10px] uppercase tracking-wider mt-1">Total Stockpick</p>
+            </div>
+            <div class="card-dark rounded-xl p-4 text-center">
+                <p class="text-xl font-extrabold text-ocean-400">465%</p>
+                <p class="text-dark-500 text-[10px] uppercase tracking-wider mt-1">Win</p>
+            </div>
+            <div class="card-dark rounded-xl p-4 text-center">
+                <p class="text-xl font-extrabold text-ocean-400">+60.2%</p>
+                <p class="text-dark-500 text-[10px] uppercase tracking-wider mt-1">Win Rate</p>
+            </div>
+            <div class="card-dark rounded-xl p-4 text-center">
+                <p class="text-xl font-extrabold text-ocean-400">+918.67%</p>
+                <p class="text-dark-500 text-[10px] uppercase tracking-wider mt-1">Total Gain PnL</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== BROKER COMPATIBILITY ===================== -->
+<section class="relative py-14 px-5">
+    <div class="max-w-2xl mx-auto text-center">
+        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-ocean-500/10 text-ocean-400 border border-ocean-500/20 mb-4">SEMUA BROKER SAHAM INDONESIA</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+            Kompatibel dengan <span class="text-gradient">Semua Broker Kamu</span>
+        </h2>
+        <p class="text-dark-400 text-sm leading-relaxed mb-6 max-w-lg mx-auto">
+            Sinyal kami cuma kasih Entry/TP/SL — kamu tetap eksekusi di broker pilihanmu. Kami TIDAK punya akses ke akun broker kamu.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-2 mb-4">
+            <span class="broker-logo">Stockbit</span>
+            <span class="broker-logo">IPOT</span>
+            <span class="broker-logo">Ajaib</span>
+            <span class="broker-logo">Bibit Saham</span>
+            <span class="broker-logo">Mandiri Sekuritas</span>
+            <span class="broker-logo">BCA Sekuritas</span>
+            <span class="broker-logo">Mirae Asset</span>
+            <span class="broker-logo">MNC Sekuritas</span>
+        </div>
+
+        <p class="text-dark-500 text-xs italic">Punya broker lain? Aman — sinyal Entry/TP/SL bisa dipakai di broker manapun.</p>
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== COMPARISON TABLE ===================== -->
+<section class="relative py-16 px-5 bg-dark-900/30">
+    <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-10 text-center">
+            Signal Provider Biasa <span class="text-dark-500">vs</span> <span class="text-gradient">Raja Saham AI</span>
+        </h2>
+
+        <div class="card-dark rounded-2xl overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-white/5">
+                        <tr>
+                            <th class="text-left p-4 text-slate-400 font-semibold text-xs">KRITERIA</th>
+                            <th class="text-center p-4 text-slate-500 font-semibold text-xs">Signal Provider Biasa</th>
+                            <th class="text-center p-4 text-ocean-400 font-semibold text-xs">Raja Saham AI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t border-white/5">
+                            <td class="p-4 text-white font-semibold text-xs">Sumber Sinyal</td>
+                            <td class="text-center p-4 text-dark-400 text-xs">Manusia / "Guru Saham"</td>
+                            <td class="text-center p-4 text-emerald-400 text-xs font-semibold">AI Multi-Faktor</td>
+                        </tr>
+                        <tr class="border-t border-white/5 bg-white/[0.02]">
+                            <td class="p-4 text-white font-semibold text-xs">Jadwal</td>
+                            <td class="text-center p-4 text-dark-400 text-xs">Tergantung mood admin</td>
+                            <td class="text-center p-4 text-emerald-400 text-xs font-semibold">3 sesi terjadwal/hari</td>
+                        </tr>
+                        <tr class="border-t border-white/5">
+                            <td class="p-4 text-white font-semibold text-xs">Cakupan Saham</td>
+                            <td class="text-center p-4 text-dark-400 text-xs">10-20 favorit</td>
+                            <td class="text-center p-4 text-emerald-400 text-xs font-semibold">800+ saham BEI</td>
+                        </tr>
+                        <tr class="border-t border-white/5 bg-white/[0.02]">
+                            <td class="p-4 text-white font-semibold text-xs">Format Sinyal</td>
+                            <td class="text-center p-4 text-dark-400 text-xs">"BUY BBRI kayaknya"</td>
+                            <td class="text-center p-4 text-emerald-400 text-xs font-semibold">Entry/TP/SL exact Rupiah</td>
+                        </tr>
+                        <tr class="border-t border-white/5">
+                            <td class="p-4 text-white font-semibold text-xs">Emosi & Bias</td>
+                            <td class="text-center p-4 text-dark-400 text-xs">FOMO, Greed, Fear</td>
+                            <td class="text-center p-4 text-emerald-400 text-xs font-semibold">Zero Emotion</td>
+                        </tr>
+                        <tr class="border-t border-white/5 bg-white/[0.02]">
+                            <td class="p-4 text-white font-semibold text-xs">Transparansi</td>
+                            <td class="text-center p-4 text-dark-400 text-xs">Cherry-picked screenshots</td>
+                            <td class="text-center p-4 text-emerald-400 text-xs font-semibold">Auto-audit + jurnal publik</td>
+                        </tr>
+                        <tr class="border-t border-white/5">
+                            <td class="p-4 text-white font-semibold text-xs">Filter Gorengan</td>
+                            <td class="text-center p-4 text-red-400 text-xs">✗ Tidak ada</td>
+                            <td class="text-center p-4 text-emerald-400 text-xs font-semibold">✓ Otomatis</td>
+                        </tr>
+                        <tr class="border-t border-white/5 bg-white/[0.02]">
+                            <td class="p-4 text-white font-semibold text-xs">Komunitas</td>
+                            <td class="text-center p-4 text-dark-400 text-xs">Grup broadcast satu arah</td>
+                            <td class="text-center p-4 text-emerald-400 text-xs font-semibold">Discord VIP interaktif</td>
+                        </tr>
+                        <tr class="border-t border-white/5">
+                            <td class="p-4 text-white font-semibold text-xs">Guarantee</td>
+                            <td class="text-center p-4 text-dark-400 text-xs">Tidak ada</td>
+                            <td class="text-center p-4 text-emerald-400 text-xs font-semibold">Performance Guarantee</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== TESTIMONIAL ===================== -->
+<section class="section-bg-alt py-16 px-5">
+    <div class="max-w-2xl mx-auto fade-in">
+        <h2 class="text-2xl text-center sm:text-3xl font-extrabold tracking-tight mb-10">
+            Mereka Sudah Menggunakan <span class="text-gradient">Raja Saham AI</span>
+        </h2>
+
+        <div class="space-y-5">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card rounded-2xl border border-surface-500 overflow-hidden">
+                <div><img src="https://cdn.scalev.id/uploads/1777331881/ayCFqjhgDu4wcoDu2RQrUQ/1777331880681-Profit-4.webp" class="w-full h-auto block" alt="Hasil trading Andi"></div>
+                <div class="p-5">
+                    <div class="flex items-center gap-1 mb-2.5"><span class="text-amber-400 text-sm">★★★★★</span></div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        "Sebelum pakai Raja Saham AI, saya udah 6 bulan trading tapi cuma break-even. Portofolio naik turun tanpa arah. Waktu pertama coba, saya masih skeptis — 'ah paling sama kayak sinyal-sinyal di grup Telegram'.
+                        <br><br>
+                        Tapi setelah 3 minggu, portofolio saya naik <strong class="text-emerald-400">+12.4%</strong>. Yang paling saya suka: format sinyalnya jelas — Entry, TP, SL exact. Gak ada 'kayaknya BUY BBRI' — semua clear."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-ocean-600/20 flex items-center justify-center text-ocean-400 text-sm font-bold">AD</div>
+                        <div><p class="text-sm font-semibold text-white">Andi Darmawan</p><p class="text-xs text-slate-500">Karyawan Swasta, Jakarta</p></div>
+                    </div>
+                    <p class="text-[10px] text-slate-600 mt-3 italic">*Hasil individu dapat bervariasi</p>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card rounded-2xl border border-surface-500 overflow-hidden">
+                <div><img src="https://cdn.scalev.id/uploads/1777332158/THh9sd9Q75A46xv-PzfTfw/1777332157704-Profit-5.webp" alt="Hasil trading Rina" class="w-full h-auto block"></div>
+                <div class="p-5">
+                    <div class="flex items-center gap-1 mb-2.5"><span class="text-amber-400 text-sm">★★★★★</span></div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        "Dulu tiap mau beli saham saya selalu ragu. Buka chart sampai pusing, tetap gak yakin. Sering kejadian: udah entry, besoknya turun, panik cut loss.
+                        <br><br>
+                        Ragu waktu mau daftar karena udah pernah kena tipu 'signal grup' yang isinya cuma ping-ping doang. Ternyata beda — di Raja Saham AI transparan banget, mereka tampilkan pick yang loss juga. Sekarang saya bisa <strong class="text-emerald-400">tidur nyenyak</strong> karena ada SL exact di setiap sinyal."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-ocean-600/20 flex items-center justify-center text-ocean-400 text-sm font-bold">RS</div>
+                        <div><p class="text-sm font-semibold text-white">Rina Susanti</p><p class="text-xs text-slate-500">Freelancer, Bandung</p></div>
+                    </div>
+                    <p class="text-[10px] text-slate-600 mt-3 italic">*Hasil individu dapat bervariasi</p>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card rounded-2xl border border-surface-500 overflow-hidden">
+                <div><img src="https://cdn.scalev.id/uploads/1777021005/HD9bpiMCmazOGs8xrq0GyQ/1777021005239-WhatsApp-Image-2026-04-24-at-15.56.02.webp" alt="Hasil trading Budi" class="w-full h-auto block"></div>
+                <div class="p-5">
+                    <div class="flex items-center gap-1 mb-2.5"><span class="text-amber-400 text-sm">★★★★★</span></div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        "Saya udah coba banyak tools trading — dari yang gratisan sampai yang bayar 2 juta/bulan. Kebanyakan cuma kasih rekomendasi tanpa penjelasan, atau tampilannya ribet banget.
+                        <br><br>
+                        Pas coba Raja Saham AI 2 minggu pertama, saya pantau parallel dengan analisa manual saya sendiri. Hasilnya <strong class="text-emerald-400">80% pick-nya sejalan dengan analisa saya</strong> — bahkan kadang lebih tepat waktu entry-nya. Discord community-nya bonus banget, diskusi live tiap hari."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-ocean-600/20 flex items-center justify-center text-ocean-400 text-sm font-bold">BP</div>
+                        <div><p class="text-sm font-semibold text-white">Budi Prasetyo</p><p class="text-xs text-slate-500">Pemilik UMKM, Surabaya</p></div>
+                    </div>
+                    <p class="text-[10px] text-slate-600 mt-3 italic">*Hasil individu dapat bervariasi</p>
+                </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card rounded-2xl border border-surface-500 overflow-hidden">
+                <div><img src="https://cdn.scalev.id/uploads/1777331972/tPTG6Vi6S9gP8iwqh6rWzA/1777331971833-Profit-1.webp" alt="Hasil trading Maya" class="w-full h-auto block"></div>
+                <div class="p-5">
+                    <div class="flex items-center gap-1 mb-2.5"><span class="text-amber-400 text-sm">★★★★★</span></div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        "Awalnya skeptis banget soal AI untuk saham. 'Ah, palingan sama kayak robot forex yang scam-scam itu'.
+                        <br><br>
+                        Tapi setelah 2 bulan pakai, saya bisa lihat polanya cukup konsisten. Tentu tidak selalu benar — ada juga pick yang meleset. Tapi secara <strong class="text-emerald-400">risk-reward jauh lebih baik</strong> daripada saya tebak sendiri. Yang paling bikin tenang: filter anti-gorengan-nya. Saya udah gak pernah kena pump-and-dump lagi."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-ocean-600/20 flex items-center justify-center text-ocean-400 text-sm font-bold">MW</div>
+                        <div><p class="text-sm font-semibold text-white">Maya Wijaya</p><p class="text-xs text-slate-500">Ibu Rumah Tangga, Semarang</p></div>
+                    </div>
+                    <p class="text-[10px] text-slate-600 mt-3 italic">*Hasil individu dapat bervariasi</p>
+                </div>
+            </div>
+
+            <p class="text-dark-500 text-xs text-center mt-6 italic">*Semua testimoni berdasarkan pengalaman pengguna real. Hasil trading tiap individu dapat bervariasi. Trading saham mengandung risiko kerugian.</p>
+        </div>
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== PRICING ===================== -->
+<section id="pricing-section" class="relative py-20 px-5">
+    <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-10 text-center">
+            Investasi <span class="text-gradient">Kurang dari Rp 12rb/Hari</span>. <br>Bisa Bantu Profit Berulang Kali.
+        </h2>
+
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+
+            <!-- Card 1 — 30 hari -->
+            <div class="card-highlight rounded-2xl p-8 glow-ocean relative overflow-hidden">
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold text-dark-100 mb-1">Raja Saham AI</h3>
+                    <p class="text-dark-500 text-sm">Akses selama 30 hari</p>
+                </div>
+                <div class="flex items-end gap-3 mb-2">
+                    <span class="price-slash text-l font-semibold">Rp 7.500.000</span>
+                    <span class="text-3xl sm:text-4xl font-extrabold text-ocean-400">Rp 299rb</span>
+                </div>
+                <span class="text-dark-500 text-sm mb-6">= Rp 9.966/hari</span>
+
+                <div class="glow-line mb-6 mt-3"></div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start gap-2.5 text-dark-200 text-sm"><svg class="w-5 h-5 text-ocean-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>3-5 sinyal/hari (Pre-Market, Midday, Post-Market)</li>
+                    <li class="flex items-start gap-2.5 text-dark-200 text-sm"><svg class="w-5 h-5 text-ocean-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Entry, TP, SL exact dalam Rupiah</li>
+                    <li class="flex items-start gap-2.5 text-dark-200 text-sm"><svg class="w-5 h-5 text-ocean-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Rationale & alasan setiap pick</li>
+                    <li class="flex items-start gap-2.5 text-dark-200 text-sm"><svg class="w-5 h-5 text-ocean-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Dashboard AI + notifikasi Discord</li>
+                    <li class="flex items-start gap-2.5 text-dark-200 text-sm"><svg class="w-5 h-5 text-ocean-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Auto-audit + notifikasi WIN otomatis</li>
+                    <li class="flex items-start gap-2.5 text-dark-200 text-sm"><svg class="w-5 h-5 text-ocean-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Akses komunitas Discord VIP</li>
+                </ul>
+                <a href="https://raja-saham.myr.id/m/1-bulan-59481" class="cta-btn w-full flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold pulse-border">
+                    Mulai 30 Hari Sekarang →
+                </a>
+                <p class="text-dark-500 text-xs text-center mt-3">🔒 Pembayaran aman & terenkripsi</p>
+            </div>
+
+            <!-- Card 2 — 90 hari — WHITE CARD -->
+            <div style="background: #ffffff; border-radius: 16px; padding: 32px; position: relative; overflow: hidden; box-shadow: 0 0 60px rgba(255,255,255,0.15);">
+                <div class="absolute top-0 right-0">
+                    <div style="background: #0ea5e9; color: #ffffff; font-size: 11px; font-weight: 700; padding: 6px 16px; border-radius: 0 0 0 12px;">🔥 PALING HEMAT</div>
+                </div>
+                <div class="mb-6">
+                    <h3 style="color: #0a0e1a; font-size: 18px; font-weight: 800; margin-bottom: 4px;">Raja Saham AI</h3>
+                    <p style="color: #64748b; font-size: 13px;">Akses selama 90 hari (3 bulan)</p>
+                </div>
+                <div class="flex items-end gap-2 mb-2">
+                    <span style="color: #94a3b8; font-size: 15px; text-decoration: line-through;">Rp 22.5 Juta</span>
+                    <span style="color: #0284c7; font-size: 36px; font-weight: 800; line-height: 1;">Rp 850rb</span>
+                </div>
+                <span style="color: #94a3b8; font-size: 14px; margin-bottom: 6px;">= Rp 9.444/hari (bayar 3 bulan, hemat)</span>
+                <div style="height: 1px; background: #e2e8f0; margin-bottom: 24px; margin-top: 6px;"></div>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start gap-2.5 text-sm font-semibold" style="color: #0284c7;"><svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #0ea5e9;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>🎁 Hemat setara 5 hari kopi Starbucks</li>
+                    <li class="flex items-start gap-2.5 text-sm" style="color: #1e293b;"><svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #0ea5e9;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>3-5 sinyal/hari (3 sesi terjadwal)</li>
+                    <li class="flex items-start gap-2.5 text-sm" style="color: #1e293b;"><svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #0ea5e9;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Entry, TP, SL exact dalam Rupiah</li>
+                    <li class="flex items-start gap-2.5 text-sm" style="color: #1e293b;"><svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #0ea5e9;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Rationale & alasan setiap pick</li>
+                    <li class="flex items-start gap-2.5 text-sm" style="color: #1e293b;"><svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #0ea5e9;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Dashboard AI + Discord VIP</li>
+                    <li class="flex items-start gap-2.5 text-sm" style="color: #1e293b;"><svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #0ea5e9;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Auto-audit + notifikasi WIN otomatis</li>
+                    <li class="flex items-start gap-2.5 text-sm" style="color: #1e293b;"><svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #0ea5e9;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Waktu cukup untuk lihat performa jangka menengah</li>
+                </ul>
+                <a href="https://raja-saham.myr.id/m/3-bulan-74724" style="background: linear-gradient(135deg, #0ea5e9, #0369a1); color: #ffffff; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 32px; border-radius: 12px; font-weight: 700; font-size: 15px; text-decoration: none;">
+                    Ambil Paket Hemat 3 Bulan →
+                </a>
+                <p style="color: #94a3b8; font-size: 11px; text-align: center; margin-top: 12px;">🔒 Pembayaran aman & terenkripsi</p>
+            </div>
+        </div>
+
+        <!-- 2 Jaminan -->
+        <div class="mt-8 rounded-2xl p-6 sm:p-8 border-2 border-green-500/30 bg-green-500/5">
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-white mb-2">2 Jaminan untuk Ketenangan Kamu</h3>
+                <p class="text-dark-400 text-sm">Kami taruh reputasi di angka — bukan sekedar janji manis.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-dark-900/60 rounded-xl p-5 border border-green-500/20">
+                    <p class="font-bold text-white text-sm mb-1">✅ Performance Guarantee</p>
+                    <p class="text-dark-300 text-sm leading-relaxed">Kalau <strong class="text-green-400">kami berikan stockpick asal-asalan</strong>, kami extend akses <strong class="text-green-400">gratis 1 bulan penuh</strong>.</p>
+                </div>
+                <div class="bg-dark-900/60 rounded-xl p-5 border border-green-500/20">
+                    <p class="font-bold text-white text-sm mb-1">✅ No Contract — Cancel Anytime</p>
+                    <p class="text-dark-300 text-sm leading-relaxed">Bayar per periode. <strong class="text-green-400">Tidak ada auto-charge</strong>. Tidak cocok? Tinggal tidak perpanjang.</p>
+                </div>
+            </div>
+            <p class="text-dark-500 text-xs mt-5 text-center italic">
+                Yang tidak kami tawarkan: refund uang tunai. Kami tidak mau sinyal AI di-screenshot lalu di-refund. Adil untuk kedua belah pihak.
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== FAQ ===================== -->
+<section class="relative py-16 px-5">
+    <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-8">
+            Pertanyaan yang <span class="text-gradient">Sering Ditanyakan</span>
+        </h2>
+
+        <div class="space-y-4">
+            <div class="card-dark rounded-xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left">
+                    <span class="font-semibold text-dark-100 text-sm pr-4">"Apakah ini robot trading otomatis?"</span>
+                    <svg class="w-5 h-5 text-ocean-400 flex-shrink-0 faq-icon transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                    <div class="px-5 pb-5 text-dark-400 text-sm leading-relaxed">
+                        Tidak. Raja Saham AI hanya kirim sinyal (BUY dengan Entry, TP, SL). Kamu tetap <strong class="text-dark-200">eksekusi sendiri</strong> di broker pilihanmu. Kami TIDAK punya akses ke akun broker kamu.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-dark rounded-xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left">
+                    <span class="font-semibold text-dark-100 text-sm pr-4">"Broker apa yang kompatibel?"</span>
+                    <svg class="w-5 h-5 text-ocean-400 flex-shrink-0 faq-icon transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                    <div class="px-5 pb-5 text-dark-400 text-sm leading-relaxed">
+                        Semua broker saham Indonesia — <strong class="text-dark-200">Stockbit, IPOT, Ajaib, Bibit Saham, Mandiri Sekuritas, BCA Sekuritas, Mirae Asset</strong>, dan lainnya. Karena kami cuma kirim sinyal, kamu tinggal eksekusi di broker manapun.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-dark rounded-xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left">
+                    <span class="font-semibold text-dark-100 text-sm pr-4">"Berapa sinyal per hari?"</span>
+                    <svg class="w-5 h-5 text-ocean-400 flex-shrink-0 faq-icon transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                    <div class="px-5 pb-5 text-dark-400 text-sm leading-relaxed">
+                        Rata-rata <strong class="text-dark-200">3-5 sinyal per hari</strong>, dikirim di 3 sesi: 08:30 (Pre-Market), 13:00 (Midday), dan 16:30 (Post-Market). Jumlah bervariasi tergantung kondisi market — kami prioritaskan <strong class="text-dark-200">kualitas over kuantitas</strong>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-dark rounded-xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left">
+                    <span class="font-semibold text-dark-100 text-sm pr-4">"Modal minimum berapa untuk mulai?"</span>
+                    <svg class="w-5 h-5 text-ocean-400 flex-shrink-0 faq-icon transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                    <div class="px-5 pb-5 text-dark-400 text-sm leading-relaxed">
+                        Tergantung broker dan saham. Secara umum, mulai dari <strong class="text-dark-200">Rp 100.000</strong> sudah bisa. Kami rekomendasikan minimum Rp 5-10 juta untuk diversifikasi ke beberapa pick. Prinsip: <em>jangan pakai uang yang kamu butuhkan dalam waktu dekat</em>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-dark rounded-xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left">
+                    <span class="font-semibold text-dark-100 text-sm pr-4">"Apakah pasti profit?"</span>
+                    <svg class="w-5 h-5 text-ocean-400 flex-shrink-0 faq-icon transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                    <div class="px-5 pb-5 text-dark-400 text-sm leading-relaxed">
+                        Tidak ada yang bisa jamin profit 100% di pasar saham — kami tampilkan LOSS juga di track record. Tapi sistem kami punya <strong class="text-dark-200">SL exact di setiap sinyal</strong> untuk lindungi modal. Win rate historis 86.4% dengan cumulative +32%. Performa masa lalu bukan jaminan masa depan.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-dark rounded-xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left">
+                    <span class="font-semibold text-dark-100 text-sm pr-4">"Apa itu anti-gorengan filter?"</span>
+                    <svg class="w-5 h-5 text-ocean-400 flex-shrink-0 faq-icon transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                    <div class="px-5 pb-5 text-dark-400 text-sm leading-relaxed">
+                        Filter otomatis untuk buang saham pump-and-dump. Kriteria: <strong class="text-dark-200">min harga Rp100, min volume 1jt lembar/hari, skip saham yang sudah naik >7% dalam 3 candle terakhir</strong>. Plus IHSG regime filter (bullish/cautious/bearish). Ini lindungi kamu dari saham manipulatif.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-dark rounded-xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left">
+                    <span class="font-semibold text-dark-100 text-sm pr-4">"Ada jaminan kalau tidak sesuai ekspektasi?"</span>
+                    <svg class="w-5 h-5 text-ocean-400 flex-shrink-0 faq-icon transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                    <div class="px-5 pb-5 text-dark-400 text-sm leading-relaxed">
+                        Ada 2 jaminan: <strong class="text-green-400">(1) Performance Guarantee</strong> — kalau win rate bulan kamu di bawah 70%, kami extend akses gratis 1 bulan. <strong class="text-green-400">(2) No Contract</strong> — bayar per periode, tanpa auto-charge, cancel kapan saja. Refund cash tidak tersedia karena sinyal AI bersifat digital.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-dark rounded-xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left">
+                    <span class="font-semibold text-dark-100 text-sm pr-4">"Setelah bayar gimana aksesnya?"</span>
+                    <svg class="w-5 h-5 text-ocean-400 flex-shrink-0 faq-icon transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500">
+                    <div class="px-5 pb-5 text-dark-400 text-sm leading-relaxed">
+                        Setelah pembayaran dikonfirmasi (proses < 5 menit), kamu langsung dapat: <strong class="text-dark-200">(1) link dashboard AI, (2) invite ke Discord VIP</strong>. Sinyal mulai dikirim di sesi berikutnya.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="relative py-16 px-5 overflow-hidden">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-ocean-500/5 blur-[120px] pointer-events-none"></div>
+
+    <div class="relative max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">
+            Market Buka. AI yang Kerja.<br><span class="text-gradient">Kamu Tinggal Eksekusi.</span>
+        </h2>
+
+        <p class="text-dark-400 leading-relaxed mb-8 max-w-lg mx-auto">
+            800+ saham BEI discan otomatis. Sinyal siap dengan Entry/TP/SL exact di dashboard + Discord kamu. Plus dilindungi <strong class="text-green-400">Performance Guarantee</strong> dan <strong class="text-green-400">cancel kapan saja</strong>.
+        </p>
+
+        <div class="mb-4">
+            <a href="#pricing-section" class="cta-btn inline-flex items-center gap-2 px-10 py-5 rounded-xl text-lg font-bold pulse-border">
+                Ambil Akses Sekarang →
+            </a>
+        </div>
+
+        <div class="flex flex-col items-center gap-1.5 mt-6">
+            <p class="text-dark-500 text-xs flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <strong class="text-green-400">Performance Guarantee + No Contract</strong>
+            </p>
+            <p class="text-dark-500 text-xs flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-ocean-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                Akses instan setelah pembayaran
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="glow-line max-w-2xl mx-auto"></div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="py-10 px-5 border-t border-dark-800">
+    <div class="max-w-2xl mx-auto text-center">
+        <p class="text-dark-600 text-xs mb-2">&copy; 2026 Raja Saham AI. All rights reserved.</p>
+        <p class="text-dark-700 text-[10px] leading-relaxed max-w-md mx-auto">
+            Disclaimer: Raja Saham AI adalah alat bantu analisa berbasis AI. Performa masa lalu tidak menjamin hasil di masa depan. Trading saham mengandung risiko kerugian. Selalu lakukan riset mandiri dan pertimbangkan kemampuan finansial sebelum berinvestasi.
+        </p>
+    </div>
+</footer>
+
+<script>
+    // ===== FAQ TOGGLE =====
+    function toggleFaq(btn) {
+        var answer = btn.nextElementSibling;
+        var icon = btn.querySelector('.faq-icon');
+        var isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+        document.querySelectorAll('.faq-answer').forEach(function(a) { a.style.maxHeight = '0px'; });
+        document.querySelectorAll('.faq-icon').forEach(function(i) { i.style.transform = 'rotate(0deg)'; });
+        if (!isOpen) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            icon.style.transform = 'rotate(180deg)';
+        }
+    }
+
+    // ===== SALES NOTIFICATION =====
+    var notifCities = ['Jakarta', 'Surabaya', 'Bandung', 'Semarang', 'Medan', 'Makassar', 'Depok', 'Tangerang', 'Bekasi', 'Palembang', 'Denpasar', 'Yogyakarta', 'Malang', 'Balikpapan', 'Manado', 'Pekanbaru', 'Batam', 'Solo'];
+    var notifNames = ['Rizki', 'Dewi', 'Ahmad', 'Sinta', 'Budi', 'Nadia', 'Fajar', 'Maya', 'Hendra', 'Lisa', 'Tono', 'Rina', 'Agus', 'Fitri', 'Dani', 'Putri', 'Eko', 'Wulan', 'Joko', 'Sari', 'Reza', 'Anisa'];
+    var notifTimes = ['1 menit yang lalu', '2 menit yang lalu', '3 menit yang lalu', '5 menit yang lalu', '7 menit yang lalu', '12 menit yang lalu', 'baru saja'];
+    var notifTemplates = [
+        function(name, city) { return name + '<strong class="text-dark-200"> dari ' + city + '</strong> baru saja berlangganan paket 30 hari.'; },
+        function(name, city) { return name + '<strong class="text-dark-200"> dari ' + city + '</strong> baru saja upgrade ke paket 3 bulan.'; },
+        function(name, city) { return name + '<strong class="text-dark-200"> dari ' + city + '</strong> sedang melihat halaman ini.'; },
+        function(name, city) { return '5 orang <strong class="text-dark-200">termasuk ' + name + '</strong> sedang checkout dalam 10 menit terakhir.'; },
+        function(name, city) { return name + '<strong class="text-dark-200"> dari ' + city + '</strong> baru saja gabung Discord komunitas.'; }
+    ];
+
+    function showNotif() {
+        var el = document.getElementById('salesNotif');
+        var textEl = document.getElementById('notifText');
+        var timeEl = document.getElementById('notifTime');
+        var city = notifCities[Math.floor(Math.random() * notifCities.length)];
+        var name = notifNames[Math.floor(Math.random() * notifNames.length)];
+        var time = notifTimes[Math.floor(Math.random() * notifTimes.length)];
+        var template = notifTemplates[Math.floor(Math.random() * notifTemplates.length)];
+        textEl.innerHTML = template(name, city);
+        timeEl.textContent = time;
+        el.classList.remove('hidden');
+        el.firstElementChild.className = 'card-dark rounded-xl p-4 flex items-start gap-3 shadow-2xl notif-enter';
+        setTimeout(function() {
+            el.firstElementChild.className = 'card-dark rounded-xl p-4 flex items-start gap-3 shadow-2xl notif-exit';
+            setTimeout(function() { el.classList.add('hidden'); }, 400);
+        }, 5000);
+    }
+
+    function closeNotif() {
+        var el = document.getElementById('salesNotif');
+        el.firstElementChild.className = 'card-dark rounded-xl p-4 flex items-start gap-3 shadow-2xl notif-exit';
+        setTimeout(function() { el.classList.add('hidden'); }, 400);
+    }
+
+    var notifStartTime = Date.now();
+    function scheduleNext() {
+        var elapsed = Date.now() - notifStartTime;
+        var delay = elapsed < 120000 ? 8000 + Math.random() * 7000 : 20000 + Math.random() * 15000;
+        setTimeout(function() { showNotif(); scheduleNext(); }, delay);
+    }
+    setTimeout(function() { showNotif(); scheduleNext(); }, 5000);
+</script>
+
+
+
+  <!-- Script Interaktif -->
+  <script>
+
+    // Auto Click-to-load YouTube
+    document.querySelectorAll('.video-embed[data-yt]').forEach(function(el){
+      el.addEventListener('click', function(){
+        if(el.classList.contains('played')) return;
+        el.classList.add('played');
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube.com/embed/' + el.getAttribute('data-yt') + '?autoplay=1&rel=0';
+        f.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+        f.setAttribute('allowfullscreen', '');
+        f.setAttribute('frameborder', '0');
+        el.appendChild(f);
+      });
+    });
+    
+  </script>
+</body>
+</html>

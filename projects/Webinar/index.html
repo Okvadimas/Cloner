@@ -1,0 +1,3456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webinar School of Founders</title>
+  
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+/* ─── TOKENS ─── */
+:root  {
+  --gold:       #C9A84C;
+  --gold-b:     #E8CC7A;
+  --gold-d:     #9B7A2E;
+  --gold-s:     rgba(201,168,76,0.10);
+  --gold-l:     rgba(201,168,76,0.18);
+  --gold-g:     rgba(201,168,76,0.22);
+  --bg:         #080604;
+  --bg2:        #0F0C07;
+  --bg3:        #161109;
+  --bg4:        #1C1510;
+  --bgc:        #0B0905;
+  --line:       rgba(201,168,76,0.10);
+  --lineS:      rgba(201,168,76,0.22);
+  --t1:         #FFFFFF;
+  --t2:         #D9C9A8;
+  --t3:         #8A7A60;
+  --t4:         #50432E;
+  --t5:         #2A2016;
+  --rust:       #C04A2A;
+  --green:      #3DB87A;
+  --max:        1100px;
+  --maxS:       820px;
+  --maxXS:      640px;
+  --g:          24px;
+  --r:          4px;
+  --rL:         10px;
+}
+
+
+/* ─── RESET ─── */
+*, *::before, *::after  {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+html  {
+  scroll-behavior: smooth;
+}
+
+body  {
+  background: var(--bg);
+  color: var(--t1);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  font-feature-settings: 'ss01' on;
+}
+
+img  {
+  display: block;
+  max-width: 100%;
+}
+
+a  {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection  {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+
+/* ─── TYPE HELPERS ─── */
+.display  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.display-heavy  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.mono     {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-feature-settings: 'tnum' on;
+}
+
+.mono-bold  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+}
+
+
+/* ─── LAYOUT ─── */
+.wrap     {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--g);
+}
+
+.wrapS    {
+  max-width: var(--maxS);
+  margin: 0 auto;
+  padding: 0 var(--g);
+}
+
+.wrapXS   {
+  max-width: var(--maxXS);
+  margin: 0 auto;
+  padding: 0 var(--g);
+}
+
+
+/* ─────────── TOPBAR ─────────── */
+.topbar  {
+  background: var(--gold);
+  color: var(--bg);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 9px 0;
+}
+
+.topbar-track  {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+
+.topbar-item  {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-sep   {
+  opacity: .4;
+}
+
+.tbdot  {
+  width: 5px;
+  height: 5px;
+  background: var(--bg);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes marquee  {
+  to  {
+    transform: translateX(-50%);
+}
+;
+}
+
+@keyframes blink    {
+  50%  {
+    opacity: .35;
+    transform: scale(.8);
+}
+;
+}
+
+
+/* ─────────── NAV ─────────── */
+.nav  {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(8,6,4,.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  padding: 13px var(--g);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-brand  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  color: var(--gold-b);
+}
+
+.nav-cta  {
+  background: var(--gold);
+  color: var(--bg);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: var(--r);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: background .15s, transform .15s;
+}
+
+.nav-cta:hover  {
+  background: var(--gold-b);
+  transform: translateY(-1px);
+}
+
+
+/* ─────────── BUTTONS ─────────── */
+.btn  {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  padding: 17px 32px;
+  border-radius: var(--r);
+  border: none;
+  cursor: pointer;
+  transition: background .18s, transform .15s, box-shadow .18s;
+  white-space: nowrap;
+}
+
+.btn-gold  {
+  background: var(--gold);
+  color: var(--bg);
+  box-shadow: 0 4px 28px var(--gold-g);
+}
+
+.btn-gold:hover  {
+  background: var(--gold-b);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(201,168,76,.45);
+}
+
+.btn-outline  {
+  background: transparent;
+  color: var(--gold-b);
+  border: 1.5px solid var(--gold-l);
+}
+
+.btn-outline:hover  {
+  background: var(--gold-s);
+  border-color: var(--gold);
+}
+
+.btn-lg  {
+  padding: 20px 40px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.btn-full  {
+  width: 100%;
+  justify-content: center;
+}
+
+.btn .arr  {
+  transition: transform .2s;
+}
+
+.btn:hover .arr  {
+  transform: translateX(3px);
+}
+
+.btn-row  {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+
+/* ─────────── SECTION BASE ─────────── */
+section  {
+  padding: 88px var(--g);
+}
+
+.sec-alt  {
+  background: var(--bg2);
+}
+
+
+/* eyebrow label */
+.eyebrow  {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.eyebrow::before  {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+}
+
+
+/* section heading */
+.sh  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(30px, 4.5vw, 54px);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: var(--t1);
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+
+.sh .ac   {
+  color: var(--gold-b);
+}
+
+.sh .dim  {
+  color: var(--t3);
+  font-weight: 600;
+}
+
+.sh-sub   {
+  font-size: clamp(15px, 1.4vw, 17px);
+  color: var(--t3);
+  line-height: 1.7;
+  max-width: 580px;
+}
+
+.sec-center .eyebrow  {
+  justify-content: center;
+}
+
+.sec-center .eyebrow::after  {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.sec-center .sh      {
+  text-align: center;
+}
+
+.sec-center .sh-sub  {
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+/* divider */
+.hr  {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+
+/* ─────────── HERO ─────────── */
+.hero  {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  padding: 44px var(--g) 52px;
+}
+
+.hero-glow  {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+  radial-gradient(ellipse 70% 55% at 30% 0%, rgba(201,168,76,0.12), transparent 70%),
+  radial-gradient(ellipse 40% 40% at 80% 80%, rgba(201,168,76,0.05), transparent 60%);
+}
+
+.hero-grid  {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+  linear-gradient(rgba(201,168,76,0.022) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(201,168,76,0.022) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: linear-gradient(180deg, black 40%, transparent 100%);
+}
+
+.hero-inner  {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media(max-width:860px) {
+  .hero-inner  {
+    grid-template-columns: 1fr;
+}
+
+  .hero-inner > div:first-child  {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+  .hero-tag  {
+    align-self: center;
+}
+
+  .hero h1   {
+    text-align: center;
+}
+
+  .hero-lead  {
+    text-align: center;
+    max-width: 100%;
+}
+
+  .hero-meta  {
+    justify-content: center;
+}
+
+  .hero-meta-item  {
+    align-items: center;
+}
+
+  .btn-row  {
+    justify-content: center;
+}
+
+  .hero-sub  {
+    text-align: center;
+}
+;
+}
+
+
+/* left */
+.hero-tag  {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: var(--gold-b);
+  border: 1px solid var(--gold-l);
+  background: var(--gold-s);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.hero-tag-dot  {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(201,168,76,.18);
+  animation: blink 1.8s infinite;
+}
+
+.hero h1  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 2.8vw, 40px);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--t1);
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+
+.hero h1 .ac   {
+  color: var(--gold-b);
+}
+
+.hero h1 .dim  {
+  color: var(--t3);
+  font-weight: 600;
+}
+
+.hero-lead  {
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: var(--t2);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  max-width: 520px;
+  font-weight: 400;
+}
+
+.hero-meta  {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-bottom: 20px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-meta-item  {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hm-key  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--t4);
+}
+
+.hm-val  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--t1);
+}
+
+.hm-val.ac  {
+  color: var(--gold);
+}
+
+.hero-sub  {
+  font-size: 11.5px;
+  color: var(--t4);
+  margin-top: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: .04em;
+}
+
+
+/* right — coach card */
+.hero-card  {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: var(--rL);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-card::before  {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.hero-card-img  {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  filter: grayscale(10%);
+}
+
+.hero-card-foot  {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.hcf-name  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--t1);
+}
+
+.hcf-role  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  color: var(--t4);
+  letter-spacing: .06em;
+  margin-top: 2px;
+}
+
+.hcf-badge  {
+  background: var(--gold-s);
+  border: 1px solid var(--gold-l);
+  color: var(--gold-b);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  padding: 5px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+
+/* ─────────── VSL ─────────── */
+.vsl-frame  {
+  width: 100%;
+  border-radius: var(--rL);
+  overflow: hidden;
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  line-height: 0;
+}
+
+.vsl-frame iframe  {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  min-height: 200px;
+  border: none;
+  display: block;
+}
+
+.vsl-placeholder  {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px;
+  background: var(--bg2);
+  background-image:
+  linear-gradient(rgba(201,168,76,0.016) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(201,168,76,0.016) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.vsl-play-btn  {
+  width: 76px;
+  height: 76px;
+  background: var(--gold);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 14px rgba(201,168,76,.10), 0 0 0 28px rgba(201,168,76,.05);
+  transition: transform .22s, box-shadow .22s;
+  flex-shrink: 0;
+}
+
+.vsl-play-btn:hover  {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 18px rgba(201,168,76,.15), 0 0 0 36px rgba(201,168,76,.07);
+}
+
+.vsl-play-btn svg  {
+  margin-left: 5px;
+}
+
+.vsl-ph-text  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 2vw, 19px);
+  color: var(--t2);
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.vsl-ph-sub  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  color: var(--t4);
+  letter-spacing: .04em;
+  text-align: center;
+  max-width: 380px;
+}
+
+
+/* ─────────── PROOF TICKER ─────────── */
+.ticker  {
+  background: var(--bg2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker::before, .ticker::after  {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ticker::before  {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg2), transparent);
+}
+
+.ticker::after   {
+  right: 0;
+  background: linear-gradient(-90deg, var(--bg2), transparent);
+}
+
+.ticker-track  {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.ticker-item  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t3);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.ticker-item .sl  {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+
+/* ─────────── PROOF STATS ─────────── */
+.proof  {
+  background: var(--bg2);
+  padding: 40px var(--g);
+}
+
+.proof-grid  {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line);
+  border-radius: var(--rL);
+  overflow: hidden;
+}
+
+@media(max-width:560px) {
+  .proof-grid  {
+    grid-template-columns: 1fr;
+}
+;
+}
+
+.proof-cell  {
+  background: var(--bg3);
+  padding: 28px 24px;
+  text-align: center;
+  border-right: 1px solid var(--line);
+  transition: background .2s;
+}
+
+.proof-cell:last-child  {
+  border-right: none;
+}
+
+.proof-cell:hover  {
+  background: var(--bg4);
+}
+
+.pc-num  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: clamp(36px,5vw,48px);
+  color: var(--t1);
+  line-height: 1;
+}
+
+.pc-num span  {
+  color: var(--gold);
+}
+
+.pc-lbl  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  color: var(--t3);
+  letter-spacing: .08em;
+  margin-top: 6px;
+}
+
+
+/* ─────────── AUTHORITY ─────────── */
+.authority  {
+  background: var(--bg3);
+}
+
+.authority-inner  {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+
+/* 9:16 photo placeholder */
+.authority-photo  {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--rL);
+  background: var(--bg2);
+  border: 1px dashed rgba(201,168,76,.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--t3);
+  position: relative;
+  overflow: hidden;
+}
+
+.authority-photo::before  {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,.04) 0%, transparent 60%);
+}
+
+.authority-photo-icon  {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(201,168,76,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.authority-photo-hint  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-align: center;
+  line-height: 1.6;
+  padding: 0 16px;
+  color: var(--t3);
+}
+
+
+/* text column */
+.authority-copy  {
+  display: flex;
+  flex-direction: column;
+}
+
+.authority-tag  {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.authority-quote  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(22px, 3vw, 36px);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: var(--t1);
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+
+.authority-quote em  {
+  color: var(--gold-b);
+  font-style: italic;
+}
+
+.authority-attr  {
+  font-size: 14px;
+  color: var(--t3);
+}
+
+.authority-attr strong  {
+  color: var(--t2);
+}
+
+
+/* mobile: stack — photo on top, text below */
+@media(max-width:700px) {
+  .authority-inner  {
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+  .authority-photo  {
+
+    /* on mobile show as a shorter portrait, centred */
+    max-width: 200px;
+    margin: 0 auto;
+}
+;
+}
+
+
+/* ─────────── PAIN vs SOLUTION ─────────── */
+.pvs  {
+  background: var(--bg);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.pvs-grid  {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: var(--max);
+  margin: 0 auto;
+  gap: 20px;
+}
+
+@media(max-width:700px) {
+  .pvs-grid  {
+    grid-template-columns: 1fr;
+}
+;
+}
+
+.pvs-col  {
+  padding: 28px 28px;
+  border-radius: var(--rL);
+  border: 1px solid var(--line);
+}
+
+.pvs-col.bad   {
+  background: rgba(192,74,42,.06);
+  border-color: rgba(192,74,42,.25);
+}
+
+.pvs-col.good  {
+  background: rgba(61,184,122,.06);
+  border-color: rgba(61,184,122,.25);
+}
+
+.pvs-head  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pvs-col.bad  .pvs-head  {
+  color: #FF8888;
+}
+
+.pvs-col.good .pvs-head  {
+  color: #6EE89B;
+}
+
+.pvs-list  {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pvs-list li  {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--t2);
+  line-height: 1.55;
+}
+
+.pvs-icon  {
+  flex-shrink: 0;
+  margin-top: 2px;
+  width: 18px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.pvs-col.bad  .pvs-icon  {
+  color: #FF6B6B;
+}
+
+.pvs-col.good .pvs-icon  {
+  color: #6EE89B;
+}
+
+
+/* ─────────── CURRICULUM ─────────── */
+.curriculum  {
+  background: var(--bg2);
+}
+
+.curr-list  {
+  max-width: var(--maxS);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.curr-item  {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.curr-item:last-child  {
+  border-bottom: none;
+}
+
+.curr-item::after  {
+  content: '';
+  position: absolute;
+  left: 35px;
+  top: 88px;
+  bottom: -16px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--gold-l), transparent);
+}
+
+.curr-item:last-child::after  {
+  display: none;
+}
+
+.curr-orb  {
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--gold-l);
+  border-radius: 50%;
+  background: var(--bg3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.curr-num  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.curr-lbl  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: .18em;
+  color: var(--t4);
+  margin-top: 3px;
+}
+
+.curr-content  {
+  padding-top: 6px;
+}
+
+.curr-tag  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.curr-title  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(20px, 2.5vw, 26px);
+  color: var(--t1);
+  margin-bottom: 8px;
+  letter-spacing: -.02em;
+}
+
+.curr-desc  {
+  font-size: 14px;
+  color: var(--t3);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.curr-bullets  {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.curr-bullets li  {
+  display: flex;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--t2);
+  line-height: 1.55;
+}
+
+.curr-bullets li::before  {
+  content: '→';
+  color: var(--gold);
+  font-weight: 600;
+  flex-shrink: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+/* ─────────── MENTOR ─────────── */
+.mentor  {
+  background: var(--bg);
+}
+
+
+/* TDW-style: large photo left, content right, no card wrapper */
+.mentor-inner  {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+
+/* Photo column */
+.mentor-photo-wrap  {
+  position: relative;
+}
+
+.mentor-img  {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: var(--rL);
+  display: block;
+}
+
+
+/* Photo placeholder (shown when img fails / no src) */
+.mentor-img-ph  {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--rL);
+  background: var(--bg2);
+  border: 1px dashed rgba(201,168,76,.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--t3);
+}
+
+.mentor-img-ph-icon  {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(201,168,76,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.mentor-img-ph-hint  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-align: center;
+  color: var(--t3);
+}
+
+
+/* Content column */
+.mentor-copy  {;
+}
+
+.mentor-headline  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 3.5vw, 46px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--t1);
+  margin-bottom: 18px;
+}
+
+.mentor-badge  {
+  display: inline-flex;
+  align-items: center;
+  background: var(--gold);
+  color: var(--bg);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: var(--r);
+  margin-bottom: 28px;
+}
+
+.mentor-achievements  {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.mentor-achievements li  {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 15px;
+  color: var(--t2);
+  line-height: 1.6;
+}
+
+.mentor-achievements li strong  {
+  color: var(--t1);
+}
+
+.mentor-ach-icon  {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  margin-top: 1px;
+}
+
+.mentor-callout  {
+  background: rgba(201,168,76,.07);
+  border: 1px solid rgba(201,168,76,.22);
+  border-radius: var(--r);
+  padding: 18px 22px;
+  margin-bottom: 32px;
+}
+
+.mentor-callout-label  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.mentor-callout-body  {
+  font-size: 15px;
+  color: var(--t2);
+  line-height: 1.7;
+  font-weight: 600;
+}
+
+.mentor-stats  {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.ms-num  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.ms-lbl  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t4);
+  margin-top: 5px;
+}
+
+
+/* Mobile: stack photo → content */
+@media(max-width:780px) {
+  .mentor-inner  {
+    grid-template-columns: 1fr;
+    gap: 28px;
+}
+
+  .mentor-img, .mentor-img-ph  {
+    max-width: 280px;
+    margin: 0 auto;
+    aspect-ratio: 3 / 4;
+}
+
+  .mentor-headline  {
+    font-size: clamp(26px, 7vw, 34px);
+}
+;
+}
+
+
+/* ─────────── TESTIMONIALS ─────────── */
+.testimonials  {
+  background: var(--bg2);
+}
+
+.test-grid  {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.test-card  {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: var(--rL);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  transition: border-color .2s, transform .2s;
+}
+
+.test-card:hover  {
+  border-color: var(--gold-l);
+  transform: translateY(-2px);
+}
+
+.test-qmark  {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 60px;
+  line-height: 1;
+  color: var(--gold);
+  opacity: .1;
+  pointer-events: none;
+}
+
+.test-stars  {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+}
+
+.test-body   {
+  font-size: 14px;
+  color: var(--t2);
+  line-height: 1.75;
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.test-foot   {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.test-av  {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold-d), var(--gold-b));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--bg);
+}
+
+.test-name  {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--t1);
+}
+
+.test-role  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  color: var(--t4);
+  letter-spacing: .06em;
+  margin-top: 2px;
+}
+
+
+/* ─────────── VIDEO TESTIMONIALS ─────────── */
+.test-vid-grid  {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 680px;
+  margin: 0 auto 36px;
+}
+
+@media(max-width:560px) {
+  .test-vid-grid  {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 320px;
+}
+;
+}
+
+
+/* each video card: placeholder + identity below */
+.test-vid-card  {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+
+/* Instagram embed container */
+.test-vid-ig  {
+  width: 100%;
+  border-radius: var(--rL);
+  overflow: hidden;
+  background: #000;
+}
+
+.test-vid-ig .instagram-media  {
+  margin: 0 !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  border-radius: var(--rL) !important;
+}
+
+
+/* 9:16 video placeholder */
+.test-vid-ph  {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--rL);
+  background: var(--bg3);
+  border: 1px dashed rgba(201,168,76,.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+
+.test-vid-ph:hover  {
+  border-color: rgba(201,168,76,.6);
+}
+
+.test-vid-ph::before  {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(201,168,76,.05) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.test-vid-play  {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(201,168,76,.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.test-vid-play::after  {
+  content: '▶';
+  font-size: 20px;
+  color: var(--gold);
+  margin-left: 4px;
+}
+
+.test-vid-label  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: .05em;
+  color: var(--t3);
+  text-align: center;
+  line-height: 1.6;
+  padding: 0 12px;
+}
+
+.test-vid-ratio  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,.45);
+}
+
+
+/* identity block below the video */
+.test-vid-identity  {
+  padding: 14px 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.test-vid-name  {
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--t1);
+}
+
+.test-vid-role  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  color: var(--t3);
+  letter-spacing: .04em;
+}
+
+.test-vid-stars  {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+
+/* ─────────── ALUMNI STORY ─────────── */
+.alumni  {
+  background: var(--bg);
+}
+
+
+/* Desktop: video kiri + card kanan, disejajarkan */
+.alumni-grid  {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  align-items: start;
+  max-width: var(--maxS);
+  margin: 0 auto;
+}
+
+
+/* 9:16 video placeholder */
+.alumni-vid  {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--rL);
+  background: var(--bg2);
+  border: 1px dashed rgba(201,168,76,.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.alumni-vid::before  {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(201,168,76,.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.alumni-vid-icon  {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(201,168,76,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.alumni-vid-icon::after  {
+  content: '▶';
+  font-size: 18px;
+  color: var(--gold);
+  margin-left: 3px;
+
+  /* optical centre for play icon */
+}
+.alumni-vid-hint  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .05em;
+  text-align: center;
+  line-height: 1.6;
+  color: var(--t3);
+  padding: 0 14px;
+}
+
+.alumni-vid-ratio  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,.5);
+}
+
+.alumni-card  {
+  background: var(--bg2);
+  border: 1px solid var(--line);
+  border-radius: var(--rL);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.alumni-card::before  {
+  content: '\201C';
+  font-family: 'Archivo', sans-serif;
+  font-size: 160px;
+  line-height: 1;
+  color: rgba(201,168,76,.08);
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  pointer-events: none;
+}
+
+.alumni-quote  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: clamp(18px, 2.4vw, 26px);
+  line-height: 1.38;
+  letter-spacing: -0.018em;
+  color: var(--t1);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.alumni-name  {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--t2);
+}
+
+.alumni-name span  {
+  color: var(--t3);
+  font-weight: 400;
+}
+
+.alumni-badge  {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  background: rgba(61,184,122,.1);
+  color: #6EE89B;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(110,232,154,.18);
+}
+
+.alumni-body  {
+  font-size: 15px;
+  color: var(--t3);
+  line-height: 1.8;
+  margin-top: 24px;
+}
+
+
+/* Mobile: stack — video di bawah headline, lalu card */
+@media(max-width:700px) {
+  .alumni-grid  {
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+  .alumni-vid  {
+    max-width: 180px;
+    margin: 0 auto;
+}
+
+  .alumni-card  {
+    padding: 28px 22px;
+}
+;
+}
+
+
+/* ─────────── VALUE STACK ─────────── */
+.value  {
+  background: var(--bg2);
+}
+
+
+/* includes list */
+.includes  {
+  max-width: var(--maxS);
+  margin: 0 auto 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--rL);
+  overflow: hidden;
+  background: var(--bg3);
+}
+
+.include  {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 20px;
+  padding: 22px 28px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  transition: background .18s;
+}
+
+.include:last-child  {
+  border-bottom: none;
+}
+
+.include:hover  {
+  background: var(--bg4);
+}
+
+.inc-icon  {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: 1px solid var(--gold-l);
+  background: var(--gold-s);
+  border-radius: var(--r);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.inc-title  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--t1);
+  margin-bottom: 3px;
+  letter-spacing: -.01em;
+}
+
+.inc-desc   {
+  font-size: 13px;
+  color: var(--t3);
+  line-height: 1.5;
+}
+
+.inc-val    {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+
+/* bonus cards */
+.bonus-sec-head  {
+  max-width: var(--maxS);
+  margin: 0 auto 28px;
+}
+
+.bonus-sec-head h3  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(22px, 3vw, 32px);
+  letter-spacing: -.025em;
+  color: var(--t1);
+  text-align: center;
+}
+
+.bonus-sec-head h3 span  {
+  color: var(--gold);
+}
+
+.bonus-grid  {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: var(--maxS);
+  margin: 0 auto 40px;
+}
+
+.bonus-card  {
+  background: var(--bg3);
+  border: 1px solid var(--gold-l);
+  border-radius: var(--rL);
+  padding: 40px 28px 28px;
+  position: relative;
+  text-align: center;
+}
+
+.bonus-card::before  {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+}
+
+.bonus-tag  {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--bg);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 0 0 6px 6px;
+  white-space: nowrap;
+}
+
+.bonus-icon  {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold-l);
+  background: var(--gold-s);
+  border-radius: var(--r);
+  font-size: 24px;
+}
+
+.bonus-title  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -.015em;
+  color: var(--t1);
+  margin-bottom: 10px;
+}
+
+.bonus-desc  {
+  font-size: 14px;
+  color: var(--t3);
+  line-height: 1.65;
+}
+
+.bonus-val  {
+  display: block;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: .04em;
+}
+
+
+/* value total */
+.value-total  {
+  max-width: var(--maxS);
+  margin: 0 auto;
+  background: var(--bg3);
+  border: 1px solid var(--gold-l);
+  border-radius: var(--rL);
+  padding: 40px 48px;
+  text-align: center;
+}
+
+.vt-l  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--t4);
+  margin-bottom: 10px;
+}
+
+.vt-num  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(44px,8vw,80px);
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: -.03em;
+}
+
+.vt-sub  {
+  font-size: 14px;
+  color: var(--t3);
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+.vt-sub strong  {
+  color: var(--t2);
+}
+
+.vt-price  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px,5vw,44px);
+  color: var(--t1);
+  line-height: 1;
+  letter-spacing: -.025em;
+}
+
+
+/* ─────────── SCARCITY ─────────── */
+.scarcity  {
+  max-width: var(--maxS);
+  margin: 20px auto 0;
+  background: rgba(192,74,42,.06);
+  border: 1px solid rgba(192,74,42,.22);
+  border-radius: var(--rL);
+  padding: 24px 22px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.sc-icon   {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.sc-title  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--t1);
+  margin-bottom: 6px;
+}
+
+.sc-body   {
+  font-size: 13.5px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.65;
+}
+
+.sc-body strong  {
+  color: var(--rust);
+}
+
+.seats-wrap  {
+  margin-top: 12px;
+}
+
+.seats-labels  {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  letter-spacing: .04em;
+  margin-bottom: 6px;
+}
+
+.seats-bar  {
+  height: 4px;
+  background: rgba(255,255,255,.07);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.seats-fill  {
+  height: 100%;
+  width: 78%;
+  background: var(--rust);
+  border-radius: 100px;
+}
+
+
+/* ─────────── COUNTDOWN ─────────── */
+.countdown-sec  {
+  background: var(--bg);
+  padding: 56px var(--g);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.cd-lbl  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.cd-wrap  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.cd-unit  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cd-num  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: clamp(34px,6vw,50px);
+  color: var(--gold);
+  background: var(--bg2);
+  border: 1px solid var(--gold-l);
+  width: clamp(64px,11vw,92px);
+  height: clamp(64px,11vw,92px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r);
+  line-height: 1;
+  font-feature-settings: 'tnum' on;
+}
+
+.cd-unit-lbl  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--t4);
+}
+
+.cd-sep  {
+  font-family: 'Archivo', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  opacity: .35;
+  padding-bottom: 22px;
+}
+
+
+/* ─────────── PRICING ─────────── */
+.pricing  {
+  background: var(--bg2);
+}
+
+.price-box  {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--bg3);
+  border: 1px solid var(--gold);
+  border-radius: var(--rL);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 80px rgba(201,168,76,.07);
+}
+
+.price-box::before  {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-d), var(--gold-b), var(--gold-d));
+}
+
+.price-head  {
+  background: var(--gold);
+  color: var(--bg);
+  padding: 12px 20px;
+  text-align: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-dot  {
+  width: 6px;
+  height: 6px;
+  background: var(--bg);
+  border-radius: 50%;
+  animation: blink 1.6s infinite;
+}
+
+.price-body  {
+  padding: 40px 32px 32px;
+}
+
+.price-orig  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  color: var(--t4);
+  text-decoration: line-through;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.price-main  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(52px,10vw,82px);
+  color: var(--t1);
+  text-align: center;
+  line-height: 1;
+  letter-spacing: -.035em;
+  margin-bottom: 6px;
+  font-feature-settings: 'tnum' on;
+}
+
+.price-main .cur  {
+  color: var(--gold);
+  font-size: .48em;
+  vertical-align: super;
+}
+
+.price-note  {
+  text-align: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--t4);
+  margin-bottom: 28px;
+}
+
+.price-list  {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.price-list li  {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--t2);
+}
+
+.price-list li:last-child  {
+  border-bottom: none;
+}
+
+.pcheck  {
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.price-warn  {
+  background: rgba(192,74,42,.06);
+  border: 1px solid rgba(192,74,42,.18);
+  border-radius: var(--r);
+  padding: 11px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  color: #FFA080;
+  text-align: center;
+  letter-spacing: .03em;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.price-guar  {
+  text-align: center;
+  margin-top: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--t4);
+}
+
+.price-guar span  {
+  color: var(--gold);
+}
+
+
+/* ─────────── GUARANTEE ─────────── */
+.guarantee  {
+  background: var(--bg);
+}
+
+.guar-box  {
+  max-width: var(--maxS);
+  margin: 0 auto;
+  background: var(--bg2);
+  border: 1px solid var(--gold-l);
+  border-radius: var(--rL);
+  padding: 40px 40px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+@media(max-width:600px) {
+  .guar-box  {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+    padding: 28px 22px;
+}
+;
+}
+
+.guar-badge  {
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(201,168,76,.08), transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media(max-width:600px) {
+  .guar-badge  {
+    margin: 0 auto;
+}
+;
+}
+
+.gb-num  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.gb-txt  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+.guar-text h3  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -.01em;
+  color: var(--t1);
+  margin-bottom: 12px;
+}
+
+.guar-text p   {
+  font-size: 14.5px;
+  color: var(--t3);
+  line-height: 1.8;
+}
+
+.guar-text strong  {
+  color: var(--t2);
+}
+
+
+/* ─────────── FAQ ─────────── */
+.faq  {
+  background: var(--bg2);
+}
+
+.faq-list  {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.faq-item  {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item:first-child  {
+  border-top: 1px solid var(--line);
+}
+
+.faq-q  {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 6px;
+  gap: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--t1);
+  user-select: none;
+  transition: color .16s;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.faq-q:hover  {
+  color: var(--gold-b);
+}
+
+.faq-icon  {
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: transform .25s;
+}
+
+.faq-a  {
+  padding: 0 6px 20px;
+  font-size: 14px;
+  color: var(--t3);
+  line-height: 1.8;
+  display: none;
+}
+
+.faq-item.open .faq-a  {
+  display: block;
+}
+
+.faq-item.open .faq-icon  {
+  transform: rotate(45deg);
+}
+
+
+/* ─────────── FINAL CTA ─────────── */
+.final  {
+  background: var(--bg);
+  padding: 104px var(--g);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+}
+
+.final::before  {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+  radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,.11), transparent 65%),
+  radial-gradient(ellipse 60% 40% at 50% 0%,   rgba(201,168,76,.05), transparent 60%);
+  pointer-events: none;
+}
+
+.final-inner  {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.final-inner .sh  {
+  text-align: center;
+}
+
+.final-inner .sh-sub  {
+  text-align: center;
+  margin: 0 auto 40px;
+}
+
+.final-meta  {
+  margin-top: 28px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--t4);
+}
+
+.final-meta .dot  {
+  color: var(--gold);
+  margin: 0 8px;
+}
+
+
+/* ─────────── FOOTER ─────────── */
+footer  {
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  padding: 36px var(--g);
+  text-align: center;
+}
+
+.ft-brand  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--gold-b);
+  margin-bottom: 8px;
+}
+
+footer p  {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  color: var(--t4);
+  letter-spacing: .04em;
+  line-height: 1.9;
+}
+
+footer a  {
+  color: var(--gold);
+}
+
+footer a:hover  {
+  text-decoration: underline;
+}
+
+
+/* ─────────── STICKY BAR ─────────── */
+.sticky-bar  {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 300;
+  background: rgba(8,6,4,.96);
+  border-top: 1px solid var(--gold-l);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 13px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  transform: translateY(100%);
+  transition: transform .35s ease;
+}
+
+.sticky-bar.show  {
+  transform: translateY(0);
+}
+
+.sb-price  {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--t1);
+  line-height: 1.1;
+}
+
+.sb-price small  {
+  display: block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: var(--t4);
+  margin-bottom: 1px;
+}
+
+
+/* ─────────── RESPONSIVE ─────────── */
+@media(max-width:720px) {
+  section  {
+    padding: 64px var(--g);
+}
+
+  .hero  {
+    padding: 52px var(--g) 60px;
+}
+
+  .hero h1  {
+    font-size: clamp(28px, 8vw, 40px);
+}
+
+  .curr-item  {
+    grid-template-columns: 56px 1fr;
+    gap: 16px;
+}
+
+  .curr-orb  {
+    width: 56px;
+    height: 56px;
+}
+
+  .curr-num  {
+    font-size: 18px;
+}
+
+  .curr-item::after  {
+    left: 27px;
+    top: 64px;
+}
+
+  .include  {
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+    padding: 18px 18px;
+}
+
+  .inc-val  {
+    grid-column: 1/-1;
+    padding-left: 56px;
+    font-size: 11px;
+}
+
+  .price-body  {
+    padding: 30px 20px 26px;
+}
+
+  .value-total  {
+    padding: 32px 24px;
+}
+
+  .bonus-grid  {
+    grid-template-columns: 1fr;
+}
+
+  .pvs-col  {
+    padding: 26px 22px;
+}
+;
+}
+
+@media(max-width:420px) {
+  .cd-num  {
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
+}
+
+  .cd-sep  {
+    font-size: 20px;
+}
+;
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after  {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+}
+
+  .ticker-track, .topbar-track  {
+    animation: none;
+}
+;
+}
+
+@font-face {
+  font-family:'Plus Jakarta Sans';
+  font-style:normal;
+  font-weight:400 800;
+  font-display:swap;
+  src:url('/fonts/plus-jakarta-sans/latin-v12.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@font-face {
+  font-family:'Plus Jakarta Sans';
+  font-style:normal;
+  font-weight:400 800;
+  font-display:swap;
+  src:url('/fonts/plus-jakarta-sans/latin-ext-v12.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+@font-face {
+  font-family:'Plus Jakarta Sans';
+  font-style:normal;
+  font-weight:400 800;
+  font-display:swap;
+  src:url('/fonts/plus-jakarta-sans/vietnamese-v12.woff2') format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;
+}
+
+@font-face {
+  font-family:'Plus Jakarta Sans';
+  font-style:normal;
+  font-weight:400 800;
+  font-display:swap;
+  src:url('/fonts/plus-jakarta-sans/cyrillic-ext-v12.woff2') format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family:'Plus Jakarta Sans Fallback';
+  src:local('Arial');
+  size-adjust:132.531%;
+  ascent-override:78.3213%;
+  descent-override:16.7508%;line-gap-override:0%;
+}
+
+html,body {
+  margin:0;
+  width:100%;
+  min-height:0;overflow-x:clip;
+}
+
+*,*::before,*::after {box-sizing:border-box;
+}
+
+img,svg,video,canvas,iframe {max-width:100%;
+}
+
+.sv-store-header .sv-store-logo-link {
+  display:flex;
+  align-items:center;justify-content:center;
+}
+
+.sv-store-logo-img {
+  width:100%;
+  height:100%;object-fit:cover;
+}
+
+#scalev-html-mode-root {
+  width:100%;min-width:0;
+}
+
+#locator {
+  display:block;
+  width:100%;
+  height:0;
+  min-height:0;
+  overflow:hidden;pointer-events:none;
+}
+
+  </style>
+</head>
+<body>
+
+<div id="scalev-html-mode-root">
+
+
+<!-- FB Pixel -->
+<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1684947515415868&amp;ev=PageView&amp;noscript=1">
+
+<!-- ─── TOPBAR ─── -->
+<div class="topbar">
+  <div class="topbar-track">
+    <span class="topbar-item"><span class="tbdot"></span>Harga Spesial Aktif</span>
+    <span class="topbar-sep">/</span>
+    <span class="topbar-item">Webinar 11 September 2026</span>
+    <span class="topbar-sep">/</span>
+    <span class="topbar-item">Slot Terbatas · Via Zoom</span>
+    <span class="topbar-sep">/</span>
+    <span class="topbar-item">Hanya Rp 99.000</span>
+    <span class="topbar-sep">/</span>
+    <span class="topbar-item">Coach Tian · 8+ Tahun Pengalaman</span>
+    <span class="topbar-sep">/</span>
+    <span class="topbar-item" aria-hidden="true"><span class="tbdot"></span>Harga Spesial Aktif</span>
+    <span class="topbar-sep" aria-hidden="true">/</span>
+    <span class="topbar-item" aria-hidden="true">Webinar 11 September 2026</span>
+    <span class="topbar-sep" aria-hidden="true">/</span>
+    <span class="topbar-item" aria-hidden="true">Slot Terbatas · Via Zoom</span>
+    <span class="topbar-sep" aria-hidden="true">/</span>
+    <span class="topbar-item" aria-hidden="true">Hanya Rp 99.000</span>
+    <span class="topbar-sep" aria-hidden="true">/</span>
+    <span class="topbar-item" aria-hidden="true">Coach Tian · 8+ Tahun Pengalaman</span>
+    <span class="topbar-sep" aria-hidden="true">/</span>
+  </div>
+</div>
+
+<!-- NAV hidden per request -->
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-inner">
+    <!-- left -->
+    <div>
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        🏫 Live Webinar School of Founders
+      </div>
+
+      <h1>
+        Siapkan Anak Menjadi<br>
+        <span class="ac">Entrepreneur Muda</span><br>
+        yang Siap Bersaing &amp;<br>
+        <span class="ac">Sukses di Masa Depan</span><br>
+        Sejak Usia Remaja
+      </h1>
+
+      <p class="hero-lead">
+        Hanya <span class="ac"><strong>90 Menit</strong></span> bersama <strong>Coach Tian</strong> — pahami cara mengenalkan
+        <span class="ac">business mindset</span>, <span class="ac">financial literacy</span>,
+        <strong>leadership</strong>, teamwork, dan public speaking kepada anak
+        <strong>sejak usia remaja</strong> —
+        tanpa harus menunggu mereka dewasa atau lulus sekolah.
+      </p>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hm-key">Tanggal</span>
+          <span class="hm-val">11 September 2026</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hm-key">Waktu</span>
+          <span class="hm-val">19.00 – 20.30 WIB</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hm-key">Format</span>
+          <span class="hm-val">Live · Zoom</span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <a href="https://yourstore.myscalev.com/your-checkout" class="btn btn-gold btn-lg" onclick="fireAddToCart()">
+          Amankan Kursi Saya
+          <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+
+      <p class="hero-sub">🔒 Pembayaran aman · Konfirmasi otomatis via email</p>
+    </div>
+
+    <!-- right — VSL Coach Tian 16:9 -->
+    <div class="vsl-frame">
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--rL);">
+        <iframe src="https://www.youtube.com/embed/_UyBC2FjLYg?rel=0&amp;modestbranding=1" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TICKER ─── -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Young Entrepreneur <span class="sl">/</span></span>
+    <span class="ticker-item">Literasi Keuangan <span class="sl">/</span></span>
+    <span class="ticker-item">Parenting Mindset <span class="sl">/</span></span>
+    <span class="ticker-item">Bisnis Sejak Dini <span class="sl">/</span></span>
+    <span class="ticker-item">2.200+ Alumni <span class="sl">/</span></span>
+    <span class="ticker-item">Public Speaking <span class="sl">/</span></span>
+    <span class="ticker-item">Coach Tian <span class="sl">/</span></span>
+    <span class="ticker-item" aria-hidden="true">Young Entrepreneur <span class="sl">/</span></span>
+    <span class="ticker-item" aria-hidden="true">Literasi Keuangan <span class="sl">/</span></span>
+    <span class="ticker-item" aria-hidden="true">Parenting Mindset <span class="sl">/</span></span>
+    <span class="ticker-item" aria-hidden="true">Bisnis Sejak Dini <span class="sl">/</span></span>
+    <span class="ticker-item" aria-hidden="true">2.200+ Alumni <span class="sl">/</span></span>
+    <span class="ticker-item" aria-hidden="true">Public Speaking <span class="sl">/</span></span>
+    <span class="ticker-item" aria-hidden="true">Coach Tian <span class="sl">/</span></span>
+  </div>
+</div>
+
+<!-- ─── PROOF STATS ─── -->
+<div class="proof">
+  <div class="proof-grid">
+    <div class="proof-cell">
+      <div class="pc-num">8<span>+</span></div>
+      <div class="pc-lbl">Tahun Pengalaman<br>Coach Tian</div>
+    </div>
+    <div class="proof-cell">
+      <div class="pc-num">2.200<span>+</span></div>
+      <div class="pc-lbl">Alumni Bootcamp<br>Aktif Berjalan</div>
+    </div>
+    <div class="proof-cell">
+      <div class="pc-num">9<span> thn</span></div>
+      <div class="pc-lbl">Usia Termuda<br>yang Sudah Berbisnis</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── AUTHORITY ─── -->
+<section class="authority sec-alt">
+  <div class="wrapS">
+    <div class="authority-inner">
+      <!-- kiri / atas mobile: foto testimoni Christina Lie -->
+      <img src="https://cdn.scalev.com/uploads/1788969944/VOvuyufT2rYNLdYa2vsbuA/1788969944310-Testi-Christina-Lie.webp" alt="Testimoni Christina Lie" style="width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:var(--rL);">
+
+      <!-- kanan / bawah mobile: teks kutipan -->
+      <div class="authority-copy">
+        <div class="authority-tag">🏆 Telah membantu lebih dari 2200+ anak di Indonesia</div>
+        <p class="authority-quote">
+          "Thank you ya Coach dah ngajarin Amy &amp; Kayla 3 hari kemarin di Business Bootcamp <em>Saya jarang rekomendasiin workshop, tapi ini emang terbaik.</em>"
+        </p>
+        <p class="authority-attr">
+          <strong>Christina Lie</strong> — Pebisnis Online &amp; Content Creator, orang tua alumni Bootcamp School of Founders
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PAIN vs SOLUTION ─── -->
+<section class="pvs">
+  <div class="wrap">
+    <div class="sec-center" style="margin-bottom:32px;">
+      <h2 class="sh" style="text-align:center;">Pilih Masa Depan<br><span class="ac">Anak Anda.</span></h2>
+    </div>
+
+    <div class="pvs-grid">
+      <div class="pvs-col bad">
+        <div class="pvs-head">❌ Tanpa Webinar Ini, Anak Anda Akan:</div>
+        <ul class="pvs-list">
+          <li><span class="pvs-icon">×</span> Tumbuh tanpa gambaran masa depan yang jelas dan terus bergantung pada orang tua.</li>
+          <li><span class="pvs-icon">×</span> Waktu habis scrolling dan gaming tanpa membangun skill nyata yang berarti.</li>
+          <li><span class="pvs-icon">×</span> Takut gagal, tidak berinisiatif, dan mudah menyerah di tengah tantangan.</li>
+          <li><span class="pvs-icon">×</span> Baru tahu tentang bisnis dan keuangan ketika sudah terlambat — saat dewasa.</li>
+          <li><span class="pvs-icon">×</span> Anda kehilangan momentum emas untuk menanamkan pola pikir entrepreneur sejak dini.</li>
+        </ul>
+      </div>
+      <div class="pvs-col good">
+        <div class="pvs-head">✓ Dengan Webinar Ini, Anak Anda Akan:</div>
+        <ul class="pvs-list">
+          <li><span class="pvs-icon">✓</span> Punya kerangka berpikir entrepreneur dan berani bermimpi besar dengan rencana nyata.</li>
+          <li><span class="pvs-icon">✓</span> Lebih percaya diri, berani berbicara, dan aktif mengambil inisiatif.</li>
+          <li><span class="pvs-icon">✓</span> Mulai memahami cara kerja bisnis, uang, dan kepemimpinan dari usia dini.</li>
+          <li><span class="pvs-icon">✓</span> Koneksi Anda dengan anak semakin erat lewat framework parenting yang terbukti.</li>
+          <li><span class="pvs-icon">✓</span> Siap mewarisi — atau bahkan menciptakan — bisnis dan kekayaan sendiri.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:center;margin-top:32px;padding:0 16px;">
+      <a href="https://yourstore.myscalev.com/your-checkout" class="btn btn-gold" onclick="fireAddToCart()" style="white-space:normal;text-align:center;">
+        Saya Pilih Masa Depan yang Lebih Baik
+        <svg class="arr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CURRICULUM ─── -->
+<section class="curriculum sec-alt" id="kurikulum">
+  <div class="wrap">
+    <div class="sec-center" style="margin-bottom:52px;">
+      <h2 class="sh" style="text-align:center;">3 Sesi Eksklusif<br>Dalam <span class="ac">90 Menit.</span></h2>
+      <p class="sh-sub" style="text-align:center;margin:0 auto;">Framework yang sama yang sudah melahirkan ribuan young entrepreneur nyata dari seluruh Indonesia.</p>
+    </div>
+
+    <div class="curr-list">
+      <div class="curr-item">
+        <div class="curr-orb">
+          <span class="curr-num">01</span>
+          <span class="curr-lbl">SESI</span>
+        </div>
+        <div class="curr-content">
+          <div class="curr-tag">3 Parenting Mindset · Fondasi Anak Tangguh</div>
+          <h3 class="curr-title">Rahasia Membentuk Pola Pikir Anak</h3>
+          <p class="curr-desc">Framework konkrit membentuk mental anak agar lebih percaya diri, tahan banting, dan siap menghadapi dunia nyata. Bukan teori — langsung bisa diterapkan malam itu juga.</p>
+          <ul class="curr-bullets">
+            <li>Mindset #1: Cara menumbuhkan rasa percaya diri sejati pada anak</li>
+            <li>Mindset #2: Mengubah rasa takut gagal jadi keberanian bereksperimen</li>
+            <li>Mindset #3: Menanamkan mental kepemimpinan dan tanggung jawab sejak dini</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="curr-item">
+        <div class="curr-orb">
+          <span class="curr-num">02</span>
+          <span class="curr-lbl">SESI</span>
+        </div>
+        <div class="curr-content">
+          <div class="curr-tag">3 Parenting Engagement · Koneksi Tanpa Drama</div>
+          <h3 class="curr-title">Cara Lebih Dekat dengan Anak Anda</h3>
+          <p class="curr-desc">Cara sederhana namun terbukti efektif membangun komunikasi bermakna dengan anak — tanpa harus bersaing dengan gadget, game, dan media sosial.</p>
+          <ul class="curr-bullets">
+            <li>Engagement #1: Teknik mendengarkan aktif yang membuat anak merasa benar-benar dipahami</li>
+            <li>Engagement #2: Cara memberi feedback yang membangun, bukan melemahkan</li>
+            <li>Engagement #3: Ritual harian sederhana yang mempererat koneksi orang tua dan anak</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="curr-item">
+        <div class="curr-orb" style="border-color:var(--gold); background:radial-gradient(circle at center, rgba(201,168,76,.12), transparent);">
+          <span class="curr-num" style="color:var(--gold-b);">03</span>
+          <span class="curr-lbl">BONUS</span>
+        </div>
+        <div class="curr-content">
+          <div class="curr-tag" style="color:var(--gold-b);">Preview Bootcamp Bisnis Akselerasi · Roadmap Nyata</div>
+          <h3 class="curr-title">Lihat Framework 3 Hari yang Mengubah Anak</h3>
+          <p class="curr-desc">Bagaimana anak bisa belajar bisnis, keuangan, dan kepemimpinan sejak dini. Anda akan melihat langsung roadmap bootcamp yang sudah terbukti.</p>
+          <ul class="curr-bullets">
+            <li>Day 1 — Membangun Business Idea Canvas pertama milik anak</li>
+            <li>Day 2 — Memahami pasar, produk, dan strategi brand yang nyata</li>
+            <li>Day 3 — Presentasi bisnis di depan mentor dan sesama peserta</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:52px;">
+      <a href="https://yourstore.myscalev.com/your-checkout" class="btn btn-gold btn-lg" onclick="fireAddToCart()">
+        Saya Mau Ikut Webinar Ini
+        <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+      <p style="margin-top:14px; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; color:var(--t4); letter-spacing:.04em;">📅 11 September 2026 · 19.00 WIB · Via Zoom</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="testimonials">
+  <div class="wrap">
+    <div class="sec-center" style="margin-bottom:48px;">
+      <h2 class="sh" style="text-align:center;">Yang Sudah <span class="ac">Merasakan</span><br>Perbedaannya.</h2>
+    </div>
+
+    <!-- ── Video testimoni 9:16 ── -->
+    <!-- CARA: ganti .test-vid-ph dengan <video> atau <iframe> YouTube Shorts -->
+    <!-- Isi .test-vid-name dan .test-vid-role dengan data asli -->
+    <div class="test-vid-grid">
+
+      <div class="test-vid-card">
+        <div class="test-vid-ig">
+          <div style="position:relative;padding-bottom:177.78%;height:0;overflow:hidden;border-radius:var(--rL);">
+            <iframe src="https://www.youtube.com/embed/YixPxvkatM0?rel=0&amp;modestbranding=1" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+            </iframe>
+          </div>
+        </div>
+        <div class="test-vid-identity">
+          <div class="test-vid-stars">★★★★★</div>
+          <div class="test-vid-name">Denny Santoso</div>
+          <div class="test-vid-role">Content Creator · Malang</div>
+        </div>
+      </div>
+
+      <div class="test-vid-card">
+        <div class="test-vid-ig">
+          <div style="position:relative;padding-bottom:177.78%;height:0;overflow:hidden;border-radius:var(--rL);">
+            <iframe src="https://www.youtube.com/embed/HjTzmTmPy7k?rel=0&amp;modestbranding=1" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+            </iframe>
+          </div>
+        </div>
+        <div class="test-vid-identity">
+          <div class="test-vid-stars">★★★★★</div>
+          <div class="test-vid-name">Mei Mei</div>
+          <div class="test-vid-role">Top 8 Masterchef S9 · Jakarta</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="test-grid">
+      <div class="test-card">
+        <span class="test-qmark">"</span>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-body">"Saya tidak menyangka anak saya yang biasanya pendiam, setelah ikut webinar langsung semangat cerita mau bikin bisnis apa. Coach Tian luar biasa."</p>
+        <div class="test-foot">
+          <div class="test-av">R</div>
+          <div>
+            <div class="test-name">Bapak Reza</div>
+            <div class="test-role">Orang tua alumni · Jakarta</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <span class="test-qmark">"</span>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-body">"Worth it banget! Investasi Rp 99 ribu tapi insight yang didapat jauh melebihi harganya. Anak saya jadi lebih punya inisiatif dan berani ngomong."</p>
+        <div class="test-foot">
+          <div class="test-av">D</div>
+          <div>
+            <div class="test-name">Ibu Della</div>
+            <div class="test-role">Pengusaha · Surabaya</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <span class="test-qmark">"</span>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-body">"Sebagai pengusaha saya sudah sering ikut seminar bisnis, tapi yang ini beda. Fokusnya pada anak — dan Coach Tian tahu betul cara bicara ke mindset mereka."</p>
+        <div class="test-foot">
+          <div class="test-av">H</div>
+          <div>
+            <div class="test-name">Pak Hendri</div>
+            <div class="test-role">CEO · Bandung</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── ALUMNI STORY ─── -->
+<section class="alumni sec-alt">
+  <div class="wrap">
+    <div class="sec-center" style="margin-bottom:32px;">
+      <h2 class="sh" style="text-align:center;">Kevin, <span class="ac">9 Tahun,</span><br>Sudah Punya Brand Sendiri.</h2>
+    </div>
+
+    <div class="alumni-grid">
+      <!-- VIDEO KEVIN — iframe embed -->
+      <div style="position:relative;padding-bottom:177.78%;height:0;overflow:hidden;border-radius:var(--rL);">
+        <iframe src="https://www.youtube.com/embed/Zlnm17qMV3I?rel=0&amp;modestbranding=1" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+        </iframe>
+      </div>
+
+      <!-- kanan desktop / bawah video mobile: card kutipan -->
+      <div class="alumni-card">
+        <p class="alumni-quote">
+          "Pusing juga sih, tapi seru. Aku udah punya nama brand sendiri — Norishi. Dan aku tau harus ngapain buat launching bisnis aku."
+        </p>
+        <div class="alumni-name">Kevin · <span>9 tahun, alumni Bootcamp School of Founders</span></div>
+        <div class="alumni-badge">✅ Verified Alumni</div>
+        <p class="alumni-body">Kevin bukan pengecualian. Ratusan anak dari program kami sudah belajar merumuskan ide bisnis, memahami pasar, sampai membuat strategi brand mereka sendiri — di bawah bimbingan Coach Tian.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MENTOR ─── -->
+<section class="mentor">
+  <div class="wrap">
+    <div class="mentor-inner">
+
+      <!-- kiri: foto besar portrait 3:4 -->
+      <div class="mentor-photo-wrap">
+        <img class="mentor-img" src="https://cdn.scalev.com/uploads/1788966638/LKjOaw3X6KMU4ma-rDHH2A/1788966638097-Foto-Coach-Tian.webp" alt="Coach Tian">
+      </div>
+
+      <!-- kanan: konten -->
+      <div class="mentor-copy">
+        <h2 class="mentor-headline">Siapa<br><span class="ac">Coach Tian?</span></h2>
+        <div class="mentor-badge">⭐ Young Entrepreneur Mentor No.1 untuk Anak di Indonesia</div>
+
+        <ul class="mentor-achievements">
+          <li>
+            <span class="mentor-ach-icon">★</span>
+            <span>Mendampingi lebih dari <strong>2.200+ anak</strong> dari seluruh Indonesia membangun pola pikir bisnis dan kepercayaan diri sejak usia dini.</span>
+          </li>
+          <li>
+            <span class="mentor-ach-icon">★</span>
+            <span>Pendiri Bootcamp <strong>School of Founders</strong> — satu-satunya bootcamp entrepreneur intensif 3 hari khusus untuk anak usia 8–17 tahun.</span>
+          </li>
+          <li>
+            <span class="mentor-ach-icon">★</span>
+            <span>Lebih dari <strong>8 tahun</strong> aktif sebagai coach dan mentor remaja dengan rekam jejak yang terukur dan terbukti.</span>
+          </li>
+          <li>
+            <span class="mentor-ach-icon">★</span>
+            <span>Alumni termuda program ini berusia <strong>9 tahun</strong> dan sudah mampu mempresentasikan ide bisnisnya secara profesional.</span>
+          </li>
+        </ul>
+
+        <div class="mentor-callout">
+          <div class="mentor-callout-label">Ingat !!!</div>
+          <p class="mentor-callout-body">Inilah saatnya Anda berinvestasi untuk masa depan anak Anda. Bukan hanya ilmu — tapi keberanian, karakter, dan mental pemenang yang akan menemani mereka seumur hidup.</p>
+        </div>
+
+        <div class="mentor-stats">
+          <div>
+            <div class="ms-num">8+</div>
+            <div class="ms-lbl">Tahun Aktif</div>
+          </div>
+          <div>
+            <div class="ms-num">2.200+</div>
+            <div class="ms-lbl">Alumni</div>
+          </div>
+          <div>
+            <div class="ms-num">9 thn</div>
+            <div class="ms-lbl">Usia Termuda</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── VALUE STACK ─── -->
+<section class="value sec-alt">
+  <div class="wrap">
+    <div class="sec-center" style="margin-bottom:44px;">
+      <h2 class="sh" style="text-align:center;">Satu Sesi yang Dirancang untuk Membantu Anda<br>Melihat <span class="ac">Potensi Anak</span> dengan Lebih Jelas</h2>
+      <p class="sh-sub" style="text-align:center;margin:12px auto 0;">Ini semua yang Anda dapatkan dalam satu malam bersama Coach Tian.</p>
+    </div>
+
+    <!-- ── Yang Anda Dapatkan ── -->
+    <div class="includes">
+      <div class="include">
+        <div class="inc-icon">🧠</div>
+        <div>
+          <div class="inc-title">3 Parenting Mindset</div>
+          <p class="inc-desc">Framework konkrit membentuk mental anak agar lebih percaya diri, tahan banting, dan siap menghadapi dunia nyata.</p>
+        </div>
+        <div class="inc-val">Rp 250.000</div>
+      </div>
+      <div class="include">
+        <div class="inc-icon">🤝</div>
+        <div>
+          <div class="inc-title">3 Parenting Engagement</div>
+          <p class="inc-desc">Cara membangun koneksi bermakna dengan anak tanpa drama dan konflik — langsung bisa diterapkan malam itu juga.</p>
+        </div>
+        <div class="inc-val">Rp 200.000</div>
+      </div>
+      <div class="include">
+        <div class="inc-icon">🚀</div>
+        <div>
+          <div class="inc-title">Preview Bootcamp Bisnis Full</div>
+          <p class="inc-desc">Roadmap 3 hari yang sudah melahirkan ribuan young entrepreneur nyata dari seluruh Indonesia.</p>
+        </div>
+        <div class="inc-val">Rp 150.000</div>
+      </div>
+      <div class="include">
+        <div class="inc-icon">💬</div>
+        <div>
+          <div class="inc-title">Sesi Q&amp;A Langsung dengan Coach Tian</div>
+          <p class="inc-desc">Tanya langsung, dapatkan jawaban spesifik untuk situasi anak Anda — bukan jawaban generik.</p>
+        </div>
+        <div class="inc-val">Eksklusif</div>
+      </div>
+    </div>
+
+    <!-- ── Bonus Khusus Daftar Hari Ini ── -->
+    <div class="bonus-sec-head">
+      <h3>Bonus Khusus <span>Daftar Hari Ini</span> 🎁</h3>
+    </div>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <span class="bonus-tag">Bonus 01</span>
+        <div class="bonus-icon">📋</div>
+        <div class="bonus-title">Rekaman Webinar — Lifetime Akses</div>
+        <p class="bonus-desc">Dapatkan rekaman sesi lengkap webinar bersama Coach Tian yang bisa Anda tonton kapan saja dan sebanyak yang Anda mau — seumur hidup.</p>
+        <span class="bonus-val">Value Rp 100.000</span>
+      </div>
+      <div class="bonus-card">
+        <span class="bonus-tag">Bonus 02</span>
+        <div class="bonus-icon">👥</div>
+        <div class="bonus-title">Akses Grup Orang Tua Eksklusif</div>
+        <p class="bonus-desc">Bergabung bersama ribuan orang tua yang sedang mendidik anak menjadi entrepreneur — saling berbagi pengalaman dan progress nyata.</p>
+        <span class="bonus-val">Value Rp 100.000</span>
+      </div>
+    </div>
+
+    <!-- ── Total Value ── -->
+    <div class="value-total">
+      <div class="vt-l">Total Nilai yang Anda Dapatkan</div>
+      <div class="vt-num">Rp 600.000+</div>
+      <p class="vt-sub">Anda dapatkan seharga <strong>hanya Rp 99.000</strong><br>Sekali bayar, manfaatnya seumur hidup.</p>
+    </div>
+
+    <div class="scarcity">
+      <span class="sc-icon">⚠️</span>
+      <div>
+        <div class="sc-title">Kursi Tersisa Sangat Terbatas</div>
+        <p class="sc-body">Zoom call ini bukan rekaman — sesi live interaktif terbatas agar setiap orang tua bisa berinteraksi langsung dengan Coach Tian. <strong>Hanya tersisa beberapa slot lagi.</strong> Setelah penuh, halaman ini ditutup.</p>
+        <div class="seats-wrap">
+          <div class="seats-labels">
+            <span>Kursi terisi</span>
+            <span style="color:var(--rust);font-weight:600;">Hampir penuh!</span>
+          </div>
+          <div class="seats-bar"><div class="seats-fill"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section class="pricing" id="pricing">
+  <div class="wrapXS">
+    <div class="sec-center" style="margin-bottom:44px;">
+      <h2 class="sh" style="text-align:center;">Ambil Langkah Pertama<br><span class="ac">Hari Ini.</span></h2>
+      <p class="sh-sub" style="text-align:center;margin:0 auto;">Sebelum kursinya penuh. Sebelum harga naik. Sebelum anak Anda kehilangan momentum.</p>
+    </div>
+
+    <div class="price-box">
+      <div class="price-head">
+        <span class="price-dot"></span>
+        Webinar Preview · School of Founders
+      </div>
+      <div class="price-body">
+        <div class="price-orig">Rp 600.000</div>
+        <div class="price-main"><span class="cur">Rp</span>99.000</div>
+        <div class="price-note">Harga Spesial · Berlaku Sampai Kursi Penuh</div>
+
+        <ul class="price-list">
+          <li><span class="pcheck">✦</span> Sesi live 90 menit bersama Coach Tian</li>
+          <li><span class="pcheck">✦</span> 3 Parenting Mindset (nilai Rp 350.000)</li>
+          <li><span class="pcheck">✦</span> 3 Parenting Engagement (nilai Rp 250.000)</li>
+          <li><span class="pcheck">✦</span> Preview Bootcamp Bisnis 3 Hari penuh</li>
+          <li><span class="pcheck">✦</span> Sesi tanya jawab langsung dengan Coach</li>
+          <li><span class="pcheck">✦</span> Link Zoom eksklusif dikirim via email</li>
+        </ul>
+
+        <div class="price-warn">
+          ⚠️ Slot hampir penuh — amankan sekarang sebelum terlambat
+        </div>
+
+        <a href="https://yourstore.myscalev.com/your-checkout" class="btn btn-gold btn-full btn-lg" onclick="fireAddToCart()">
+          Ya, Saya Daftar Sekarang!
+          <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+
+        <div class="price-guar">
+          🔒 Pembayaran aman <span>·</span> Konfirmasi otomatis via email
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:20px;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;color:var(--t4);letter-spacing:.04em;">
+      📅 11 September 2026 · 19.00–20.30 WIB · Via Zoom
+    </p>
+  </div>
+</section>
+
+<!-- ─── GUARANTEE ─── -->
+<section class="guarantee">
+  <div class="wrap">
+    <div class="guar-box">
+      <div class="guar-badge">
+        <div class="gb-num">100%</div>
+        <div class="gb-txt">Kepuasan<br>Terjamin</div>
+      </div>
+      <div class="guar-text">
+        <h3>Garansi Kepuasan Penuh</h3>
+        <p>Ikuti webinar sampai selesai. Jika Anda merasa tidak mendapatkan <strong>satu pun insight baru yang bermanfaat</strong> untuk mendidik anak Anda, hubungi tim kami dan kami akan mengembalikan investasi Anda sepenuhnya. Tanpa pertanyaan, tanpa kerumitan.</p>
+        <p>Kami yakin — karena ribuan orang tua sudah membuktikannya.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="faq sec-alt">
+  <div class="wrap">
+    <div class="sec-center" style="margin-bottom:44px;">
+      <h2 class="sh" style="text-align:center;">Ada yang <span class="ac">Ingin Ditanyakan?</span></h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Untuk anak usia berapa webinar ini cocok?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Webinar ini ditujukan untuk orang tua yang memiliki anak usia 9–21 tahun. Namun insight parenting-nya relevan untuk siapapun yang ingin membentuk pola pikir entrepreneur pada anak sejak dini.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Apakah saya perlu bawa anak ke webinar ini?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Tidak wajib. Webinar preview ini dirancang untuk orang tua — agar Anda memahami program dan bisa memutuskan apakah bootcamp lanjutan cocok untuk anak Anda. Tapi kalau anak ingin ikut, sangat boleh!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Apakah ada rekaman jika tidak bisa hadir live?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Sesi ini adalah live eksklusif dan tidak direkam untuk menjaga kualitas interaksi. Pastikan Anda hadir di tanggal 11 September 2026 pukul 19.00 WIB.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Apa bedanya dengan webinar parenting biasa?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Ini bukan sekadar webinar motivasi. Anda akan mendapat framework konkrit: 3 Parenting Mindset, 3 Parenting Engagement, dan preview roadmap bootcamp bisnis yang sudah terbukti melahirkan ratusan young entrepreneur nyata.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Bagaimana cara mendapat link Zoom setelah daftar?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Setelah pembayaran berhasil, konfirmasi dan link Zoom eksklusif peserta akan langsung dikirimkan ke email Anda secara otomatis. Proses hanya butuh 2 menit.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section class="final">
+  <div class="final-inner">
+    <h2 class="sh" style="text-align:center;margin-bottom:16px;">
+      Jangan Biarkan Anak Anda<br>Belajar Tentang Bisnis <span class="ac">Terlambat.</span>
+    </h2>
+    <p class="sh-sub" style="text-align:center;margin:0 auto 40px;">Satu keputusan Rp 99.000 hari ini bisa membuka dunia baru untuk anak Anda.</p>
+
+    <div class="btn-row" style="justify-content:center;">
+      <a href="https://yourstore.myscalev.com/your-checkout" class="btn btn-gold btn-lg" onclick="fireAddToCart()">
+        Daftar Webinar — Rp 99.000
+        <svg class="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+
+    <p class="final-meta">
+      📅 11 September 2026
+      <span class="dot">·</span>
+      Pukul 19.00 WIB
+      <span class="dot">·</span>
+      Via Zoom
+    </p>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="ft-brand">School of Founders</div>
+  <p>© 2016–2026 School of Founders. All rights reserved.</p>
+  <p style="margin-top:4px;"><a href="mailto:hello@schooloffounders.id">hello@schooloffounders.id</a></p>
+</footer>
+
+<!-- ─── STICKY BAR ─── -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sb-price">
+    <small>Rp 600.000</small>
+    Rp 99.000
+  </div>
+  <a href="https://yourstore.myscalev.com/your-checkout" class="btn btn-gold" onclick="fireAddToCart()">
+    Daftar Sekarang
+    <svg class="arr" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+  </a>
+</div>
+
+
+
+
+
+
+</div>
+<div id="locator" aria-hidden="true"></div>
+
+  <!-- Script Interaktif -->
+  <script>
+// PIXEL
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1684947515415868');
+fbq('track','PageView');
+
+window.addEventListener('DOMContentLoaded', function(){
+
+  // COUNTDOWN ke Minggu berikutnya 19:00 WIB
+  function getTarget(){
+    var n = new Date(Date.now() + 7*3600*1000);
+    var day = n.getUTCDay(), hour = n.getUTCHours();
+    var d = (0 - day + 7) % 7;
+    if(d === 0 && hour >= 19) d = 7;
+    return new Date(Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate()+d, 12,0,0));
+  }
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var diff = Math.max(0, getTarget()-Date.now());
+    var h=Math.floor(diff/3600000), m=Math.floor(diff%3600000/60000), s=Math.floor(diff%60000/1000);
+    var eh=document.getElementById('t-h'), em=document.getElementById('t-m'), es=document.getElementById('t-s');
+    if(eh) eh.textContent=pad(h);
+    if(em) em.textContent=pad(m);
+    if(es) es.textContent=pad(s);
+  }
+  tick(); setInterval(tick,1000);
+
+  // STICKY BAR
+  var bar = document.getElementById('stickyBar');
+  if(bar) window.addEventListener('scroll', function(){
+    bar.classList.toggle('show', window.scrollY > 600);
+  });
+
+  // FAQ
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){
+      var item = q.parentElement, open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!open) item.classList.add('open');
+    });
+  });
+
+  // PIXEL FIRE
+  window.fireAddToCart = function(){
+    if(typeof fbq !== 'undefined'){
+      fbq('track','AddToCart',{value:99000,currency:'IDR',
+        content_name:'Webinar Preview School of Founders',
+        content_ids:['webinar-preview'],content_type:'product'});
+    }
+  };
+
+});
+  </script>
+</body>
+</html>

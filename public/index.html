@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Cloner Engine ⚡ Light Neo-Brutalism</title>
+  
+  <!-- Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FDFBF7;
+      --card-bg: #FFFFFF;
+      --ink: #0F0F12;
+      --yellow: #FFE600;
+      --yellow-light: #FFF7B2;
+      --cyan: #38BDF8;
+      --cyan-light: #BAE6FD;
+      --green: #4ADE80;
+      --green-light: #DCFCE7;
+      --pink: #FF6B6B;
+      --pink-light: #FFE4E6;
+      --purple: #A78BFA;
+      --purple-light: #EDE9FE;
+      --border: 3px solid #0F0F12;
+      --border-thin: 2px solid #0F0F12;
+      --shadow: 5px 5px 0px #0F0F12;
+      --shadow-sm: 3px 3px 0px #0F0F12;
+      --shadow-lg: 8px 8px 0px #0F0F12;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      background-image: radial-gradient(#0F0F12 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--ink);
+      line-height: 1.5;
+      min-height: 100vh;
+      padding: 24px 16px 60px;
+    }
+
+    h1, h2, h3, .heading-font {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Top Navigation Bar */
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--card-bg);
+      border: var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 16px 24px;
+      margin-bottom: 28px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      background: var(--yellow);
+      border: var(--border-thin);
+      box-shadow: 3px 3px 0px #0F0F12;
+      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .brand-text h1 {
+      font-size: 22px;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-text .tagline {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #666;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: var(--border-thin);
+      border-radius: 999px;
+      box-shadow: 2px 2px 0px #0F0F12;
+      background: var(--green);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #000;
+      display: inline-block;
+    }
+
+    .badge-target {
+      background: var(--cyan-light);
+      box-shadow: 2px 2px 0px #0F0F12;
+    }
+
+    .badge-target strong {
+      color: #0F0F12;
+      background: #FFFFFF;
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid #0F0F12;
+      margin-left: 2px;
+    }
+
+    .badge-status {
+      transition: all 0.2s ease;
+    }
+
+    .badge-status.processing {
+      background: var(--yellow) !important;
+      animation: badgePulse 0.8s infinite alternate ease-in-out;
+    }
+
+    .badge-status.error {
+      background: var(--pink) !important;
+      color: #fff;
+    }
+
+    .badge-status.error .badge-dot {
+      background: #fff;
+    }
+
+    .badge-status.success {
+      background: var(--green) !important;
+    }
+
+    @keyframes badgePulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.03); }
+    }
+
+    @keyframes spinAnim {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .spin {
+      display: inline-block;
+      animation: spinAnim 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Buttons (Neo-Brutalist) */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 18px;
+      border: var(--border-thin);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--card-bg);
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px #0F0F12;
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #0F0F12;
+    }
+
+    .btn-yellow { background: var(--yellow); }
+    .btn-cyan { background: var(--cyan); }
+    .btn-pink { background: var(--pink); color: #fff; }
+    .btn-green { background: var(--green); }
+    .btn-lg {
+      font-size: 16px;
+      padding: 14px 24px;
+      width: 100%;
+    }
+
+    /* Main Grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    @media (min-width: 980px) {
+      .main-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    /* Neo-Brutalist Card */
+    .card {
+      background: var(--card-bg);
+      border: var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header {
+      padding: 16px 20px;
+      border-bottom: var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .card-header.bg-yellow { background: var(--yellow); }
+    .card-header.bg-cyan { background: var(--cyan); }
+    .card-header.bg-purple { background: var(--purple-light); }
+
+    .card-title {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-body {
+      padding: 24px;
+      flex: 1;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .form-label span.req {
+      color: var(--pink);
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .form-input {
+      width: 100%;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 14px;
+      border: var(--border-thin);
+      border-radius: var(--radius-sm);
+      background: #FAFAFA;
+      color: var(--ink);
+      box-shadow: 2px 2px 0px #0F0F12;
+      transition: all 0.15s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      background: #FFFFFF;
+      box-shadow: 4px 4px 0px #0F0F12;
+      border-color: #000;
+    }
+
+    .form-help {
+      font-size: 12px;
+      color: #555;
+      font-weight: 600;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-tags {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .quick-tag {
+      font-size: 11px;
+      font-weight: 700;
+      background: #F4F4F4;
+      border: 1px solid #000;
+      padding: 4px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 1px 1px 0px #000;
+      transition: all 0.1s;
+    }
+
+    .quick-tag:hover {
+      background: var(--yellow);
+      transform: translateY(-1px);
+    }
+
+    /* Engine Selector */
+    .engine-selector {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    @media (min-width: 600px) {
+      .engine-selector {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .engine-option {
+      position: relative;
+      border: var(--border-thin);
+      border-radius: var(--radius-sm);
+      background: #FAFAFA;
+      padding: 12px 14px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #0F0F12;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .engine-option:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px #0F0F12;
+    }
+
+    .engine-option.active {
+      background: #FFFBE6;
+      border: 2.5px solid #0F0F12;
+      box-shadow: 4px 4px 0px #0F0F12;
+    }
+
+    .engine-option.active::after {
+      content: '✓ ACTIVE';
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      background: var(--yellow);
+      color: #0F0F12;
+      font-size: 10px;
+      font-weight: 900;
+      border: 1.5px solid #0F0F12;
+      border-radius: 4px;
+      padding: 1px 6px;
+      box-shadow: 2px 2px 0px #0F0F12;
+    }
+
+    .engine-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #0F0F12;
+      background: var(--cyan);
+      color: #0F0F12;
+    }
+
+    .engine-badge.fast {
+      background: var(--green);
+    }
+
+    .engine-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .engine-desc {
+      font-size: 11px;
+      color: #555;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    /* Terminal Console */
+    .terminal-box {
+      margin-top: 24px;
+      border: var(--border-thin);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      background: #111418;
+    }
+
+    .terminal-bar {
+      background: #20242C;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #000;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid #000;
+    }
+    .dot-red { background: #FF5F56; }
+    .dot-yellow { background: #FFBD2E; }
+    .dot-green { background: #27C93F; }
+
+    .terminal-title {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #8E95A5;
+      letter-spacing: 0.05em;
+    }
+
+    .terminal-body {
+      padding: 14px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12.5px;
+      color: #38BDF8;
+      height: 190px;
+      overflow-y: auto;
+      line-height: 1.5;
+    }
+
+    .terminal-line {
+      margin-bottom: 4px;
+    }
+    .terminal-line.step { color: #FFE600; font-weight: bold; }
+    .terminal-line.success { color: #4ADE80; font-weight: bold; }
+    .terminal-line.finish { color: #FFF; background: #15803D; padding: 2px 6px; border-radius: 4px; display: inline-block; }
+    .terminal-line.error { color: #FF6B6B; font-weight: bold; }
+    .terminal-line.info { color: #CBD5E1; }
+
+    /* Project Cards List */
+    .project-search {
+      margin-bottom: 18px;
+    }
+
+    .projects-container {
+      display: grid;
+      gap: 14px;
+      max-height: 600px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .project-card {
+      background: #FFFFFF;
+      border: var(--border-thin);
+      box-shadow: 3px 3px 0px #0F0F12;
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      transition: all 0.15s ease;
+    }
+
+    .project-card:hover {
+      box-shadow: 5px 5px 0px #0F0F12;
+      transform: translate(-2px, -2px);
+      background: var(--yellow-light);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .project-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-badges {
+      display: flex;
+      gap: 6px;
+      margin: 8px 0 12px;
+      flex-wrap: wrap;
+    }
+
+    .mini-badge {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border: 1.5px solid #000;
+      border-radius: 6px;
+      box-shadow: 1px 1px 0px #000;
+      background: #fff;
+    }
+    .mini-badge.scalev { background: var(--green); }
+    .mini-badge.size { background: var(--cyan-light); }
+
+    .project-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1.5px dashed #000;
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    /* Modal (Preview) */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 15, 18, 0.75);
+      z-index: 100;
+      padding: 20px;
+      place-items: center;
+    }
+
+    .modal-backdrop.show {
+      display: grid;
+    }
+
+    .modal-window {
+      background: var(--card-bg);
+      border: var(--border);
+      box-shadow: var(--shadow-lg);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 1100px;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: popIn 0.2s ease-out;
+    }
+
+    .modal-confirm-window {
+      background: var(--card-bg);
+      border: var(--border);
+      box-shadow: var(--shadow-lg);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 480px;
+      overflow: hidden;
+      animation: popIn 0.2s ease-out;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-header {
+      padding: 14px 20px;
+      border-bottom: var(--border);
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .viewport-controls {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .modal-body {
+      flex: 1;
+      background: #E5E7EB;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .preview-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #FFFFFF;
+      transition: width 0.2s ease;
+    }
+
+    .preview-frame.mobile {
+      width: 375px;
+      border-left: var(--border-thin);
+      border-right: var(--border-thin);
+      box-shadow: var(--shadow);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="brand-group">
+      <div class="brand-logo">⚡</div>
+      <div class="brand-text">
+        <h1>CLONER ENGINE <span style="font-size: 14px; background: var(--pink); color: #fff; padding: 2px 8px; border-radius: 6px; border: 1.5px solid #000;">NEO</span></h1>
+        <div class="tagline">Scalev & Universal Landing Page Cloner</div>
+      </div>
+    </div>
+    
+    <div class="topbar-actions">
+      <button class="btn btn-sm btn-yellow" id="btnRefreshProjects" title="Reload projects list from disk (/projects)">
+        <span id="refreshIcon">🔄</span> Refresh
+      </button>
+      <div class="badge badge-status" id="engineStatusBadge">
+        <span class="badge-dot" id="statusDot"></span>
+        <span id="statusBadge">Engine Ready</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Grid -->
+  <main class="main-grid">
+    
+    <!-- LEFT: Action Card & Terminal -->
+    <section class="card">
+      <div class="card-header bg-yellow">
+        <h2 class="card-title">🎯 CLONE NEW LANDING PAGE</h2>
+        <button type="button" class="btn btn-sm btn-pink" id="btnClearForm" title="Reset all input fields" style="font-size: 11px; padding: 4px 10px;">
+          🔄 Reset Form
+        </button>
+      </div>
+
+      <div class="card-body">
+        <form id="cloneForm">
+          <!-- Target URL -->
+          <div class="form-group">
+            <label class="form-label" for="targetUrl">
+              Target Landing Page URL <span class="req">*</span>
+            </label>
+            <div class="input-wrapper">
+              <input type="url" class="form-input" id="targetUrl" placeholder="https://tdwresources.myscalev.com/fr3days" required>
+            </div>
+            <div class="form-help">
+              💡 Enter any Scalev or universal landing page URL to clone.
+            </div>
+            <div class="quick-tags">
+              <span class="quick-tag" onclick="fillExample('https://tdwresources.myscalev.com/fr3days', 'TDW')">TDW Seminar Example</span>
+            </div>
+          </div>
+
+          <!-- Project Name -->
+          <div class="form-group">
+            <label class="form-label" for="projectName">
+              Project Name <span class="req">*</span>
+            </label>
+            <input type="text" class="form-input" id="projectName" placeholder="e.g. TDW_Seminar, ShoeStore, BlackFriday_Promo" required>
+            <div class="form-help">
+              📁 New projects will be automatically generated inside the "projects/" subfolder.
+            </div>
+          </div>
+
+          <!-- CTA Placeholder Link -->
+          <div class="form-group">
+            <label class="form-label" for="ctaUrl">
+              Scalev Checkout Link Placeholder (Optional)
+            </label>
+            <input type="url" class="form-input" id="ctaUrl" value="https://yourstore.myscalev.com/your-checkout">
+            <div class="form-help">
+              🔗 All CTA buttons on the page will automatically redirect to this link.
+            </div>
+          </div>
+
+          <!-- Cloner Engine Selector -->
+          <div class="form-group">
+            <label class="form-label">
+              CLONER ENGINE MODE <span class="req">*</span>
+            </label>
+            <div class="engine-selector">
+              <div class="engine-option active" id="optionPuppeteer">
+                <input type="radio" name="clonerMode" id="modePuppeteer" value="puppeteer" checked style="display:none;">
+                <span class="engine-badge">RECOMMENDED</span>
+                <span class="engine-title">🚀 Dynamic Engine (Puppeteer)</span>
+                <span class="engine-desc">Render JavaScript penuh untuk Next.js, React, Astro, Vue, Webflow & auto-inline CSS.</span>
+              </div>
+              <div class="engine-option" id="optionFast">
+                <input type="radio" name="clonerMode" id="modeFast" value="fast" style="display:none;">
+                <span class="engine-badge fast">ULTRA FAST</span>
+                <span class="engine-title">⚡ Fast Static Mode (HTTP)</span>
+                <span class="engine-desc">Download kilat zero-dependency untuk Scalev standar & web HTML statis sederhana.</span>
+              </div>
+            </div>
+            <div class="form-help">
+              💡 Pilih <b>Dynamic Engine</b> jika website memakai Next.js, React, Astro, atau memuat konten via JavaScript.
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-yellow btn-lg" id="btnSubmit">
+            ⚡ CLONE NOW
+          </button>
+        </form>
+
+        <!-- Real-time Terminal Box -->
+        <div class="terminal-box">
+          <div class="terminal-bar">
+            <div class="terminal-dots">
+              <span class="terminal-dot dot-red"></span>
+              <span class="terminal-dot dot-yellow"></span>
+              <span class="terminal-dot dot-green"></span>
+            </div>
+            <span class="terminal-title">LIVE PROCESS TERMINAL</span>
+            <button class="btn btn-sm" id="btnClearLog" style="padding: 2px 8px; font-size: 10px;">Clear</button>
+          </div>
+          <div class="terminal-body" id="terminalLog">
+            <div class="terminal-line info">[System Ready] Waiting for URL and Project Name input...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: Project List Card -->
+    <section class="card">
+      <div class="card-header bg-cyan">
+        <h2 class="card-title">📂 SAVED PROJECTS</h2>
+        <span class="mini-badge" id="projectCount">0 Projects</span>
+      </div>
+
+      <div class="card-body">
+        <div class="project-search">
+          <input type="text" class="form-input" id="searchProjects" placeholder="🔍 Search projects...">
+        </div>
+
+        <div class="projects-container" id="projectsList">
+          <!-- Rendered dynamically -->
+          <div style="text-align: center; padding: 40px 20px; color: #666; font-weight: 600;">
+            Loading projects...
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Modal Live Preview -->
+<div class="modal-backdrop" id="previewModal">
+  <div class="modal-window">
+    <div class="modal-header">
+      <h3 style="display: flex; align-items: center; gap: 8px;" id="previewTitle">
+        👁️ PREVIEW LANDING PAGE
+      </h3>
+      <div class="viewport-controls">
+        <button class="btn btn-sm btn-yellow" onclick="setViewport('desktop')">🖥️ Desktop</button>
+        <button class="btn btn-sm" onclick="setViewport('mobile')">📱 Mobile (375px)</button>
+        <a class="btn btn-sm btn-cyan" id="btnOpenNewTab" target="_blank" href="#">🌐 Open Full Tab</a>
+        <button class="btn btn-sm btn-pink" onclick="closePreview()">✕ Close</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <iframe class="preview-frame" id="previewFrame" src="about:blank"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete Confirmation (Neo-Brutalism) -->
+<div class="modal-backdrop" id="deleteModal">
+  <div class="modal-confirm-window">
+    <div class="modal-header" style="background: var(--pink); color: #fff;">
+      <h3 style="display: flex; align-items: center; gap: 8px; font-size: 16px;">
+        ⚠️ KONFIRMASI HAPUS PROJECT
+      </h3>
+      <button type="button" class="btn btn-sm" onclick="closeDeleteModal()" style="padding: 2px 8px; font-size: 13px; background: #fff; color: #000;">✕</button>
+    </div>
+    <div style="padding: 24px; background: #fff;">
+      <p style="font-size: 14px; color: #222; margin-bottom: 16px; line-height: 1.6;">
+        Apakah Anda yakin ingin menghapus project <strong id="deleteProjectTargetName" style="background: var(--yellow-light); padding: 2px 8px; border: 1.5px solid #000; border-radius: 4px; display: inline-block;"></strong> secara permanen?
+      </p>
+      <div style="background: var(--pink-light); border: 2px solid var(--pink); border-radius: 8px; padding: 12px; font-size: 12px; font-weight: 700; color: #991B1B; margin-bottom: 20px; display: flex; gap: 8px; align-items: center;">
+        <span>🚨</span>
+        <span>Perhatian: Folder project dan semua file di dalamnya akan dihapus dari disk secara permanen dan tidak bisa dikembalikan!</span>
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button type="button" class="btn btn-sm" onclick="closeDeleteModal()">
+          Batal
+        </button>
+        <button type="button" class="btn btn-sm btn-pink" id="btnConfirmDelete" style="font-weight: 800;">
+          🗑️ Hapus Permanen
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
