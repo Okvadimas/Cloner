@@ -61,6 +61,41 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
+   WIDE SCREEN / FULL HD ADAPTATION (>= 1440px, misal 1920px)
+───────────────────────────────────────────────────────────── */
+@media (min-width: 1440px) {
+  :root {
+    --max:        1360px;
+    --maxS:       1020px;
+    --maxXS:      760px;
+    --g:          28px;
+  }
+
+  .comp-grid-stockwise,
+  .materi-list,
+  .tl-timeline-wrap {
+    max-width: 1260px;
+  }
+
+  .hero-visual-wrap,
+  .hero-meta {
+    max-width: 1120px;
+  }
+
+  .pricing-grid-2col,
+  .guarantee-box {
+    max-width: 1080px;
+  }
+
+  .hero h1 {
+    max-width: 1200px;
+  }
+  .hero-lead {
+    max-width: 980px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
    RESET & FOUNDATIONS
 ───────────────────────────────────────────────────────────── */
 *, *::before, *::after {
@@ -2331,6 +2366,285 @@ footer p {
   }
 }
 
+
+
+/* ─────────────────────────────────────────────────────────────
+   HERO SNAPSHOT MARQUEE SLIDER (StockWise Style 320x200)
+───────────────────────────────────────────────────────────── */
+.hero-slider-wrap {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-top: 52px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0 16px;
+}
+
+.hero-slider-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hero-slider-fade.left {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg) 0%, transparent 100%);
+}
+
+.hero-slider-fade.right {
+  right: 0;
+  background: linear-gradient(270deg, var(--bg) 0%, transparent 100%);
+}
+
+.hero-slider-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: hero-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.hero-slider-track:hover {
+  animation-play-state: paused;
+}
+
+.hs-card {
+  width: 320px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(14, 165, 233, 0.22);
+  background: #080d19;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(14, 165, 233, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
+}
+
+.hs-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--cyan);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6), 0 0 24px rgba(14, 165, 233, 0.22);
+}
+
+.hs-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes hero-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 10px)); }
+}
+
+@media (max-width: 640px) {
+  .hero-slider-wrap {
+    margin-top: 36px;
+  }
+  .hero-slider-fade {
+    width: 44px;
+  }
+  .hs-card {
+    width: 260px;
+    height: 162px;
+  }
+  .hero-slider-track {
+    gap: 14px;
+    animation-duration: 22s;
+  }
+}
+
+
+
+/* ─────────────────────────────────────────────────────────────
+   STOCKWISE STYLE COMPARISON SECTION (2-Card Grid)
+───────────────────────────────────────────────────────────── */
+.comp-grid-stockwise {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1080px;
+  margin: 48px auto 0;
+  width: 100%;
+}
+
+.comp-card-sw {
+  border-radius: 20px;
+  padding: 32px 28px;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Negative / Conventional Solutions Card (Left) */
+.comp-card-sw.negative {
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(18, 10, 16, 0.75);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.comp-card-sw.negative:hover {
+  border-color: rgba(239, 68, 68, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Positive / Raja Saham AI Card (Right) */
+.comp-card-sw.positive {
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  background: rgba(8, 14, 28, 0.85);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55), 0 0 30px rgba(14, 165, 233, 0.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+}
+
+.comp-card-sw.positive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30px;
+  right: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan-b), transparent);
+  border-radius: 2px;
+}
+
+.comp-card-sw.positive:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65), 0 0 40px rgba(14, 165, 233, 0.20);
+  transform: translateY(-3px);
+}
+
+/* Header inside Card */
+.comp-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.comp-badge-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.comp-badge-icon.icon-red {
+  background: rgba(239, 68, 68, 0.14);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+}
+
+.comp-badge-icon.icon-cyan {
+  background: rgba(14, 165, 233, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: var(--cyan-b);
+  box-shadow: 0 0 16px rgba(14, 165, 233, 0.3);
+}
+
+.comp-card-title {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.comp-card-title .highlight-text {
+  color: var(--cyan-b);
+}
+
+/* List Items */
+.comp-item-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.comp-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.comp-item-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.comp-item-icon.red {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+}
+
+.comp-item-icon.cyan {
+  background: rgba(14, 165, 233, 0.15);
+  color: var(--cyan-b);
+}
+
+.comp-item-text {
+  color: var(--t2);
+}
+
+.comp-item-text strong {
+  color: #ffffff;
+  font-weight: 700;
+  display: inline;
+}
+
+.comp-card-sw.positive .comp-item-text strong {
+  color: #f8fafc;
+}
+
+@media (max-width: 860px) {
+  .comp-grid-stockwise {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+    gap: 22px;
+    margin-top: 36px;
+  }
+  .comp-card-sw {
+    padding: 24px 20px;
+  }
+  .comp-card-title {
+    font-size: 18px;
+  }
+  .comp-list-item {
+    font-size: 13.5px;
+    gap: 10px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2407,6 +2721,55 @@ footer p {
           <div class="hm-key">Saham Gorengan</div>
         </div>
       </div>
+
+      <!-- Hero Snapshot Slider (Marquee ringkas 320x200) -->
+      <div class="hero-slider-wrap">
+        <div class="hero-slider-container">
+          <div class="hero-slider-fade left"></div>
+          <div class="hero-slider-fade right"></div>
+          <div class="hero-slider-track">
+            <!-- Set 1 -->
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfa3Y0cmgiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfa3Y0cmgiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF9rdjRyaCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF9rdjRyaCkiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF9rdjRyaCkiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfa3Y0cmgpIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDE8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 1" width="320" height="200">
+            </div>
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfN28xNWoiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfN28xNWoiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF83bzE1aiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF83bzE1aikiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF83bzE1aikiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfN28xNWopIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDI8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 2" width="320" height="200">
+            </div>
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfZWhyNTAiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfZWhyNTAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF9laHI1MCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF9laHI1MCkiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF9laHI1MCkiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfZWhyNTApIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDM8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 3" width="320" height="200">
+            </div>
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfNmgxcjUiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfNmgxcjUiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF82aDFyNSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF82aDFyNSkiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF82aDFyNSkiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfNmgxcjUpIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDQ8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 4" width="320" height="200">
+            </div>
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfbDQycHMiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfbDQycHMiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF9sNDJwcyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF9sNDJwcykiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF9sNDJwcykiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfbDQycHMpIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDU8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 5" width="320" height="200">
+            </div>
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfNTF0dWIiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfNTF0dWIiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF81MXR1YiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF81MXR1YikiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF81MXR1YikiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfNTF0dWIpIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDY8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 6" width="320" height="200">
+            </div>
+            <!-- Set 2 (Clone for infinite marquee) -->
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfa3Y0cmgiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfa3Y0cmgiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF9rdjRyaCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF9rdjRyaCkiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF9rdjRyaCkiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfa3Y0cmgpIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDE8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 1" width="320" height="200">
+            </div>
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfN28xNWoiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfN28xNWoiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF83bzE1aiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF83bzE1aikiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF83bzE1aikiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfN28xNWopIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDI8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 2" width="320" height="200">
+            </div>
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfZWhyNTAiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfZWhyNTAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF9laHI1MCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF9laHI1MCkiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF9laHI1MCkiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfZWhyNTApIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDM8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 3" width="320" height="200">
+            </div>
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfNmgxcjUiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfNmgxcjUiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF82aDFyNSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF82aDFyNSkiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF82aDFyNSkiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfNmgxcjUpIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDQ8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 4" width="320" height="200">
+            </div>
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfbDQycHMiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfbDQycHMiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF9sNDJwcyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF9sNDJwcykiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF9sNDJwcykiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfbDQycHMpIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDU8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 5" width="320" height="200">
+            </div>
+            <div class="hs-card">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMjAwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnXzMyMF8yMDBfNTF0dWIiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDcwZDFlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMGExNTJlIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA0MDgxNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJncmlkXzMyMF8yMDBfNTF0dWIiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMjQgMCBMIDAgMCAwIDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoNTYsIDE4OSwgMjQ4LCAwLjA2KSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8L3BhdHRlcm4+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdsb3dfMzIwXzIwMF81MXR1YiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMzhiZGY4IiBzdG9wLW9wYWNpdHk9IjAuOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMjg0YzciIHN0b3Atb3BhY2l0eT0iMC4yIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdfMzIwXzIwMF81MXR1YikiLz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWRfMzIwXzIwMF81MXR1YikiLz4KCiAgPCEtLSBCb3JkZXIgRnJhbWUgLS0+CiAgPHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjMxNiIgaGVpZ2h0PSIxOTYiIHJ4PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yOCkiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHJlY3QgeD0iNiIgeT0iNiIgd2lkdGg9IjMwOCIgaGVpZ2h0PSIxODgiIHJ4PSI4IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4wNCkiIHN0cm9rZS13aWR0aD0iMSIvPgoKICA8IS0tIFRvcCBBY2NlbnQgQmFyIC0tPgogIDxyZWN0IHg9IjIwIiB5PSIyIiB3aWR0aD0iNjAiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0idXJsKCNnbG93XzMyMF8yMDBfNTF0dWIpIi8+CgogIDwhLS0gQ2VudGVyIENvbnRlbnQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYwLCAxMDApIj4KICAgIDwhLS0gSWNvbiBDaXJjbGUgLS0+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTI4IiByPSIyNCIgZmlsbD0iIzBiMWEzOCIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBJbWFnZSBJY29uIFZlY3RvciAtLT4KICAgIDxwYXRoIGQ9Ik0gLTEwIC0yNCBMIDEwIC0yNCBNIC0xMCAtMzIgTCAxMCAtMzIgTSAtNCAtMzYgTCAtNCAtMjAgTSA0IC0zNiBMIDQgLTIwIiBzdHJva2U9IiMzOGJkZjgiIHN0cm9rZS13aWR0aD0iMS44IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxjaXJjbGUgY3g9IjQiIGN5PSItMjciIHI9IjIiIGZpbGw9IiMzOGJkZjgiLz4KCiAgICA8IS0tIENhdGVnb3J5IFBpbGwgQmFkZ2UgLS0+CiAgICA8cmVjdCB4PSItODUiIHk9IjQiIHdpZHRoPSIxNzAiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzA4MTQyYiIgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4zKSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICA8dGV4dCB4PSIwIiB5PSIxOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM4YmRmOCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI4MDAiIGxldHRlci1zcGFjaW5nPSIxLjUiPlNJR05BTCBQUkVWSUVXPC90ZXh0PgoKICAgIDwhLS0gTWFpbiBUaXRsZSAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQuNSIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+UFJFVklFVyBTTkFQU0hPVCAjMDY8L3RleHQ+CgogICAgPCEtLSBEaW1lbnNpb25zIC0tPgogICAgPHRleHQgeD0iMCIgeT0iNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM5NGEzYjgiIGZvbnQtZmFtaWx5PSInSmV0QnJhaW5zIE1vbm8nLCAnRmlyYSBDb2RlJywgbW9ub3NwYWNlLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iNjAwIiBsZXR0ZXItc3BhY2luZz0iMSI+WyAzMjAgw5cgMjAwIFBYIF08L3RleHQ+CgogICAgPCEtLSBIZWxwZXIgVGV4dCAtLT4KICAgIDx0ZXh0IHg9IjAiIHk9Ijc4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhiIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI1MDAiPkdhbnRpIGRlbmdhbiBmaWxlIGdhbWJhciBBbmRhPC90ZXh0PgogIDwvZz4KPC9zdmc+" alt="Signal Preview Snapshot 6" width="320" height="200">
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -2685,55 +3048,136 @@ footer p {
         <p class="sh-sub">Lihat perbandingan nyata antara teknologi kuantitatif modern dengan metode konvensional.</p>
       </div>
 
-      <div class="comp-table-wrap">
-        <table class="comp-table">
-          <thead>
-            <tr>
-              <th style="width: 25%;">Fitur & Parameter</th>
-              <th class="highlight" style="width: 30%;">👑 Raja Saham AI</th>
-              <th style="width: 23%;">Grup VIP / Pom-pom</th>
-              <th style="width: 22%;">Analisa Mandiri</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Cakupan Pemindaian</strong></td>
-              <td class="highlight">800+ Saham BEI Real-Time</td>
-              <td>Hanya 3-5 Saham Pilihan Admin</td>
-              <td>10-15 Saham (Keterbatasan Waktu)</td>
-            </tr>
-            <tr>
-              <td><strong>Dasar Analisis</strong></td>
-              <td class="highlight">Kuantitatif (7 Indikator + Multi-TF)</td>
-              <td>Feeling / Rumor / Kepentingan Pribadi</td>
-              <td>Subjektif & Rentan Emosi Takut/Serakah</td>
-            </tr>
-            <tr>
-              <td><strong>Filter Anti-Gorengan</strong></td>
-              <td class="highlight">Multi-Layer Otomatis & Ketat</td>
-              <td>Seringkali Mempromosikan Gorengan</td>
-              <td>Sering Terjebak FOMO Running Trade</td>
-            </tr>
-            <tr>
-              <td><strong>Titik Entry, TP, & SL</strong></td>
-              <td class="highlight">Exact dalam Rupiah & Terjadwal</td>
-              <td>Sering Ambigu ("Beli Dekat Support")</td>
-              <td>Ragu Menentukan Titik Cutloss</td>
-            </tr>
-            <tr>
-              <td><strong>Auto-Audit Sistem</strong></td>
-              <td class="highlight">Otomatis Tiap 10 Menit</td>
-              <td>Tidak Ada (Postingan Dihapus Jika Rugi)</td>
-              <td>Harus Pantau Layar Seharian</td>
-            </tr>
-            <tr>
-              <td><strong>Waktu yang Dibutuhkan</strong></td>
-              <td class="highlight">&lt; 5 Menit / Hari untuk Eksekusi</td>
-              <td>Seharian Membaca Chat Ribuan Member</td>
-              <td>3-4 Jam Analisis Manual Malam Hari</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- StockWise Style Comparison Grid (2 Cards) -->
+      <div class="comp-grid-stockwise">
+        
+        <!-- CARD 1: SOLUSI LAIN / METODE KONVENSIONAL (KIRI - MERAH) -->
+        <div class="comp-card-sw negative">
+          <div class="comp-card-header">
+            <div class="comp-badge-icon icon-red">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="comp-card-title">Metode Konvensional / Solusi Lain</h3>
+          </div>
+
+          <ul class="comp-item-list">
+            <li class="comp-list-item">
+              <span class="comp-item-icon red">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Cakupan Sangat Terbatas:</strong> Hanya memantau 3–5 saham pilihan admin atau rumor subjektif dari chat grup.
+              </span>
+            </li>
+            <li class="comp-list-item">
+              <span class="comp-item-icon red">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Analisis Berbasis Emosi / Rumor:</strong> Mengandalkan feeling, "kabar burung", atau kepentingan insider pom-pom.
+              </span>
+            </li>
+            <li class="comp-list-item">
+              <span class="comp-item-icon red">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Tanpa Filter Anti-Gorengan:</strong> Sering merekomendasikan saham illiquid, saham tidur Rp 50, dan volume semu.
+              </span>
+            </li>
+            <li class="comp-list-item">
+              <span class="comp-item-icon red">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Titik Entry & Exit Ambigu:</strong> Rekomendasi serba abu-abu ("beli dekat support", "take profit sesuka hati").
+              </span>
+            </li>
+            <li class="comp-list-item">
+              <span class="comp-item-icon red">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Tanpa Auto-Audit & Transparansi:</strong> Tidak ada audit performa (postingan rekomendasi rugi sering dihapus diam-diam).
+              </span>
+            </li>
+            <li class="comp-list-item">
+              <span class="comp-item-icon red">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Menguras Waktu & Energi:</strong> Harus memantau layar bursa seharian dan membaca ribuan pesan chat yang bising.
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CARD 2: RAJA SAHAM AI (KANAN - CYAN) -->
+        <div class="comp-card-sw positive">
+          <div class="comp-card-header">
+            <div class="comp-badge-icon icon-cyan">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="comp-card-title">👑 Raja Saham AI <span class="highlight-text">(Kuantitatif)</span></h3>
+          </div>
+
+          <ul class="comp-item-list">
+            <li class="comp-list-item">
+              <span class="comp-item-icon cyan">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Pemindaian 800+ Saham BEI:</strong> Mesin otomatis memindai seluruh emiten bursa live tick-by-tick secara real-time.
+              </span>
+            </li>
+            <li class="comp-list-item">
+              <span class="comp-item-icon cyan">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>100% Analisis Kuantitatif:</strong> Dihitung simultan dengan 7 indikator teknikal pada 2 timeframe (60M & Daily).
+              </span>
+            </li>
+            <li class="comp-list-item">
+              <span class="comp-item-icon cyan">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Filter Anti-Gorengan Ketat:</strong> Eliminasi otomatis membuang saham FCA, turnover < 5M, dan volume palsu.
+              </span>
+            </li>
+            <li class="comp-list-item">
+              <span class="comp-item-icon cyan">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Entry, TP, & SL Exact Rupiah:</strong> Nominal angka presisi siap pasang order tanpa ragu dan bebas bias emosi.
+              </span>
+            </li>
+            <li class="comp-list-item">
+              <span class="comp-item-icon cyan">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Auto-Audit Bot Tiap 10 Menit:</strong> Bot otomatis meng-audit harga bursa secara transparan dan kirim alert saat target hit.
+              </span>
+            </li>
+            <li class="comp-list-item">
+              <span class="comp-item-icon cyan">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="comp-item-text">
+                <strong>Efisiensi Waktu (< 5 Menit / Hari):</strong> Sinyal matang otomatis terkirim langsung ke Dashboard web & Discord VIP Anda.
+              </span>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </section>
@@ -2884,7 +3328,7 @@ footer p {
       <div class="value-total-box">
         <div class="vt-label">TOTAL NILAI RIIL KESELURUHAN SISTEM &amp; BONUS</div>
         <div class="vt-price-slash">Rp 17.850.000+ / Tahun</div>
-        <div class="vt-real-deal">Hari Ini Cuma Mulai Dari <span class="text-gradient">Rp 299rb</span> atau <span class="text-gradient">Rp 850rb (Paket Kuartal 3 Bulan)</span></div>
+        <div class="vt-real-deal">Hari Ini Cuma Mulai Dari <span class="text-gradient">Rp 299rb</span></div>
         <p class="vt-sub">Kurang dari biaya cutloss satu kali akibat salah masuk saham gorengan.</p>
       </div>
     </div>
@@ -3095,25 +3539,9 @@ footer p {
           <div class="price-divider"></div>
 
           <ul class="pricing-features">
-            <li class="highlight-feat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Waktu optimal membuktikan compounding hasil trading</span>
-            </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Semua fitur Paket 1 Bulan selama 90 hari penuh</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>3-5 sinyal/hari (Pre, Mid, & Post-Market sesi teratur)</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Entry, TP, SL exact dalam Rupiah</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Dashboard AI + Channel Discord VIP Priority</span>
+              <span>Semua fitur Paket Bulanan</span>
             </li>
             <li class="highlight-feat">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -3122,6 +3550,10 @@ footer p {
             <li class="highlight-feat">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               <span>FREE Akses Weekly Macro Market Outlook</span>
+            </li>
+            <li class="highlight-feat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Bonus Lain-nya</span>
             </li>
           </ul>
 
@@ -3264,10 +3696,10 @@ footer p {
   <!-- ===================== STICKY BAR (Daftar Sekarang seperti di Webinar — bawah) ===================== -->
   <div class="sticky-bar" id="stickyBar">
     <div class="sb-price">
-      <small>Rp 22.500.000</small>
-      Rp 850.000 <span>/ 3 Bulan</span>
+      <small>Rp 7.500.000</small>
+      Rp 299.000 <span>/ Bulan</span>
     </div>
-    <a href="https://raja-saham.myr.id/m/3-bulan-74724" class="btn btn-cyan">
+    <a href="https://raja-saham.myr.id/m/1-bulan-59481" class="btn btn-cyan">
       Daftar Sekarang
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
